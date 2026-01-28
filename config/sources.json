@@ -1,0 +1,288 @@
+{
+  "sources": [
+    {
+      "url": "https://www.nytimes.com/by/agnes-chang",
+      "enabled": true
+    },
+    {
+      "url": "https://www.nytimes.com/by/alexander-cardia",
+      "enabled": true
+    },
+    {
+      "url": "https://www.nytimes.com/by/alicia-parlapiano",
+      "enabled": false
+    },
+    {
+      "url": "https://www.nytimes.com/by/anjali-singhvi",
+      "enabled": false
+    },
+    {
+      "url": "https://www.nytimes.com/by/ashley-wu",
+      "enabled": false
+    },
+    {
+      "url": "https://www.nytimes.com/by/bedel-saget",
+      "enabled": false
+    },
+    {
+      "url": "https://www.nytimes.com/by/charlie-smart",
+      "enabled": false
+    },
+    {
+      "url": "https://www.nytimes.com/by/eleanor-lutz",
+      "enabled": false
+    },
+    {
+      "url": "https://www.nytimes.com/by/elena-shao",
+      "enabled": false
+    },
+    {
+      "url": "https://www.nytimes.com/by/eli-murray",
+      "enabled": false
+    },
+    {
+      "url": "https://www.nytimes.com/by/ella-koeze",
+      "enabled": false
+    },
+    {
+      "url": "https://www.nytimes.com/by/helmuth-rosales",
+      "enabled": false
+    },
+    {
+      "url": "https://www.nytimes.com/by/jeremy-white",
+      "enabled": false
+    },
+    {
+      "url": "https://www.nytimes.com/by/jonathan-corum",
+      "enabled": false
+    },
+    {
+      "url": "https://www.nytimes.com/by/josh-holder",
+      "enabled": false
+    },
+    {
+      "url": "https://www.nytimes.com/by/josh-williams",
+      "enabled": false
+    },
+    {
+      "url": "https://www.nytimes.com/by/kk-rebecca-lai",
+      "enabled": false
+    },
+    {
+      "url": "https://www.nytimes.com/by/karen-yourish",
+      "enabled": false
+    },
+    {
+      "url": "https://www.nytimes.com/by/karthik-patanjali",
+      "enabled": false
+    },
+    {
+      "url": "https://www.nytimes.com/by/keith-collins",
+      "enabled": false
+    },
+    {
+      "url": "https://www.nytimes.com/by/lauren-leatherby",
+      "enabled": false
+    },
+    {
+      "url": "https://www.nytimes.com/by/lazaro-gamio",
+      "enabled": false
+    },
+    {
+      "url": "https://www.nytimes.com/by/leanne-abraham",
+      "enabled": false
+    },
+    {
+      "url": "https://www.nytimes.com/by/malika-khurana",
+      "enabled": false
+    },
+    {
+      "url": "https://www.nytimes.com/by/marco-hernandez",
+      "enabled": false
+    },
+    {
+      "url": "https://www.nytimes.com/by/martin-gonzalez-gomez",
+      "enabled": false
+    },
+    {
+      "url": "https://www.nytimes.com/by/mira-rojanasakul",
+      "enabled": false
+    },
+    {
+      "url": "https://www.nytimes.com/by/pablo-robles",
+      "enabled": false
+    },
+    {
+      "url": "https://www.nytimes.com/by/scott-reinhard",
+      "enabled": false
+    },
+    {
+      "url": "https://www.nytimes.com/by/weiyi-cai",
+      "enabled": false
+    },
+    {
+      "url": "https://www.nytimes.com/by/yuliya-parshina-kottas",
+      "enabled": false
+    },
+    {
+      "url": "https://www.washingtonpost.com/arcio/rss/author/Aaron-Steckelberg/",
+      "enabled": true
+    },
+    {
+      "url": "https://www.washingtonpost.com/arcio/rss/author/Adri%C3%A1n-Blanco/",
+      "enabled": true
+    },
+    {
+      "url": "https://www.washingtonpost.com/arcio/rss/author/Alyssa-Fowers/",
+      "enabled": false
+    },
+    {
+      "url": "https://www.washingtonpost.com/arcio/rss/author/Artur-Galocha/",
+      "enabled": false
+    },
+    {
+      "url": "https://www.washingtonpost.com/arcio/rss/author/Ashlyn-Still/",
+      "enabled": false
+    },
+    {
+      "url": "https://www.washingtonpost.com/arcio/rss/author/Atthar-Mirza/",
+      "enabled": false
+    },
+    {
+      "url": "https://www.washingtonpost.com/arcio/rss/author/Bonnie-Berkowitz/",
+      "enabled": false
+    },
+    {
+      "url": "https://www.washingtonpost.com/arcio/rss/author/Carson-TerBush/",
+      "enabled": false
+    },
+    {
+      "url": "https://www.washingtonpost.com/arcio/rss/author/Chelsea-Conrad",
+      "enabled": false
+    },
+    {
+      "url": "https://www.washingtonpost.com/arcio/rss/author/Chris-Alcantara/",
+      "enabled": false
+    },
+    {
+      "url": "https://www.washingtonpost.com/arcio/rss/author/Daniel-Wolfe/",
+      "enabled": false
+    },
+    {
+      "url": "https://www.washingtonpost.com/arcio/rss/author/Daniela-Santamarina/",
+      "enabled": false
+    },
+    {
+      "url": "https://www.washingtonpost.com/arcio/rss/author/Dylan-Moriarty/",
+      "enabled": false
+    },
+    {
+      "url": "https://www.washingtonpost.com/arcio/rss/author/Emily-Wright/",
+      "enabled": false
+    },
+    {
+      "url": "https://www.washingtonpost.com/arcio/rss/author/Gabriel-Florit/",
+      "enabled": false
+    },
+    {
+      "url": "https://www.washingtonpost.com/arcio/rss/author/Greg-Manifold/",
+      "enabled": false
+    },
+    {
+      "url": "https://www.washingtonpost.com/arcio/rss/author/Hanna-Zakharenko",
+      "enabled": false
+    },
+    {
+      "url": "https://www.washingtonpost.com/arcio/rss/author/Hannah-Dormido",
+      "enabled": false
+    },
+    {
+      "url": "https://www.washingtonpost.com/arcio/rss/author/Harry-Stevens/",
+      "enabled": false
+    },
+    {
+      "url": "https://www.washingtonpost.com/arcio/rss/author/Imogen-Piper",
+      "enabled": false
+    },
+    {
+      "url": "https://www.washingtonpost.com/arcio/rss/author/Janice%20Kai-Chen",
+      "enabled": false
+    },
+    {
+      "url": "https://www.washingtonpost.com/arcio/rss/author/Joe-Fox",
+      "enabled": false
+    },
+    {
+      "url": "https://www.washingtonpost.com/arcio/rss/author/John-Muyskens",
+      "enabled": false
+    },
+    {
+      "url": "https://www.washingtonpost.com/arcio/rss/author/J%C3%BAlia-Ledur",
+      "enabled": false
+    },
+    {
+      "url": "https://www.washingtonpost.com/arcio/rss/author/Kati-Perry",
+      "enabled": false
+    },
+    {
+      "url": "https://www.washingtonpost.com/arcio/rss/author/Kevin-Schaul",
+      "enabled": false
+    },
+    {
+      "url": "https://www.washingtonpost.com/arcio/rss/author/Lauren-Tierney",
+      "enabled": false
+    },
+    {
+      "url": "https://www.washingtonpost.com/arcio/rss/author/Leslie-Shapiro",
+      "enabled": false
+    },
+    {
+      "url": "https://www.washingtonpost.com/arcio/rss/author/Luis-Melgar",
+      "enabled": false
+    },
+    {
+      "url": "https://www.washingtonpost.com/arcio/rss/author/Monica-Ulmanu",
+      "enabled": false
+    },
+    {
+      "url": "https://www.washingtonpost.com/arcio/rss/author/Naema-Ahmed",
+      "enabled": false
+    },
+    {
+      "url": "https://www.washingtonpost.com/arcio/rss/author/Nick-Mourtoupalas",
+      "enabled": false
+    },
+    {
+      "url": "https://www.washingtonpost.com/arcio/rss/author/Niko-Kommenda/",
+      "enabled": false
+    },
+    {
+      "url": "https://www.washingtonpost.com/arcio/rss/author/Shelly-Tan",
+      "enabled": false
+    },
+    {
+      "url": "https://www.washingtonpost.com/arcio/rss/author/Simon-Ducroquet",
+      "enabled": false
+    },
+    {
+      "url": "https://www.washingtonpost.com/arcio/rss/author/Szu%20Yu%20-Chen",
+      "enabled": false
+    },
+    {
+      "url": "https://www.washingtonpost.com/arcio/rss/author/Tim-Meko",
+      "enabled": false
+    },
+    {
+      "url": "https://www.washingtonpost.com/arcio/rss/author/Veronica-Penney",
+      "enabled": false
+    },
+    {
+      "url": "https://www.washingtonpost.com/arcio/rss/author/William-Neff/",
+      "enabled": false
+    },
+    {
+      "url": "https://www.washingtonpost.com/arcio/rss/author/Yan-Wu",
+      "enabled": false
+    }
+  ]
+}
