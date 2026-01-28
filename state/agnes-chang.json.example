@@ -1,0 +1,13 @@
+{
+  "source_id": "agnes-chang",
+  "last_article": {
+    "title": "Example Article Title",
+    "url": "https://www.nytimes.com/2025/01/28/business/example-article.html",
+    "published_time": "2025-01-28T10:00:00Z"
+  },
+  "last_checked": "2025-01-28T15:30:00.123456Z",
+  "etag": "W/\"abc123def456\"",
+  "last_modified": "Mon, 28 Jan 2025 10:00:00 GMT",
+  "error_count": 0,
+  "last_error": null
+}

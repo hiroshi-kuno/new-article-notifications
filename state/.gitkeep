@@ -1,0 +1,2 @@
+# This directory stores state files for each monitored source
+# Each source will have a JSON file named {source_id}.json
