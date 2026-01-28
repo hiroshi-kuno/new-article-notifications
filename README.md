@@ -208,7 +208,13 @@ Check the output and `state/` directory for results.
 
 ### Required Secrets
 
-**None!** The system uses the default `GITHUB_TOKEN` which is automatically provided by GitHub Actions.
+**For basic functionality:**
+- **None!** The system uses the default `GITHUB_TOKEN` which is automatically provided by GitHub Actions.
+
+**For Slack notifications (optional):**
+- `SLACK_WEBHOOK_URL`: Slack Incoming Webhook URL for new article notifications
+
+See `SLACK_SETUP.md` for detailed setup instructions.
 
 ### Permissions
 
@@ -285,31 +291,29 @@ def get_scraper(url: str):
 }
 ```
 
-### Adding Notifications
+### Slack Notifications
 
-To send notifications when new articles are detected, modify `check_articles.py`:
+Slack notifications are **built-in** and ready to use:
+
+1. Create a Slack Incoming Webhook
+2. Add `SLACK_WEBHOOK_URL` to GitHub Secrets
+3. New articles will automatically notify Slack
+
+See `SLACK_SETUP.md` for detailed instructions.
+
+### Adding Other Notifications
+
+To add email, Discord, or other notification methods, modify `src/notifications.py`:
 
 ```python
-def check_source(source: dict, state_manager: StateManager) -> bool:
-    # ... existing code ...
-
-    if state.last_article is None:
-        # First check
+class EmailNotifier:
+    def send(self, source_id: str, article: Article, previous_article: Optional[Article]):
+        # Your email notification logic
         pass
-    elif state.last_article != article:
-        # NEW ARTICLE - send notification here
-        send_notification(
-            f"New article from {source_id}",
-            f"{article.title}\n{article.url}"
-        )
-```
 
-Notification options:
-- Email (via SendGrid, AWS SES, etc.)
-- Slack webhook
-- Discord webhook
-- GitHub Issues
-- Custom webhook
+# Register in check_articles.py
+email_notifier = EmailNotifier()
+```
 
 ## Troubleshooting
 

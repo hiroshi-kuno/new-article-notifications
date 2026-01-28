@@ -7,9 +7,10 @@ from src.config import Config
 from src.state_manager import StateManager
 from src.scrapers import get_scraper, ScraperError
 from src.models import Article
+from src.notifications import get_notifier
 
 
-def check_source(source: dict, state_manager: StateManager) -> bool:
+def check_source(source: dict, state_manager: StateManager, notifier) -> bool:
     """Check a single source for updates.
 
     Args:
@@ -75,6 +76,9 @@ def check_source(source: dict, state_manager: StateManager) -> bool:
             print(f"    Title: {article.title}")
             print(f"    URL: {article.url}")
 
+            # Send notification
+            notifier.send(source_id, article, state.last_article)
+
             state.last_article = article
             state.error_count = 0
             state.last_error = None
@@ -124,11 +128,18 @@ def main():
         # Initialize state manager
         state_manager = StateManager()
 
+        # Initialize notifier
+        notifier = get_notifier()
+        if notifier.is_enabled():
+            print(f"\n✓ Slack notifications enabled")
+        else:
+            print(f"\n⚠ Slack notifications disabled (SLACK_WEBHOOK_URL not set)")
+
         # Check each source
         results = []
         for source in sources:
             source_id = Config.extract_source_id(source['url'])
-            success = check_source(source, state_manager)
+            success = check_source(source, state_manager, notifier)
             results.append((source_id, success))
 
         # Print summary

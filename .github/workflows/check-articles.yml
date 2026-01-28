@@ -40,6 +40,8 @@ jobs:
           pip install -r requirements.txt
 
       - name: Check for new articles
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
         run: |
           python check_articles.py
 
