@@ -52,6 +52,7 @@ def check_source(source: dict, state_manager: StateManager, notifier) -> bool:
         # If page not modified (304), no need to check further
         if article is None:
             print(f"No changes detected (page not modified)")
+            print(f"  → Notification: NOT sent (page not modified)")
             state_manager.save_state(state)
             return True
 
@@ -64,6 +65,7 @@ def check_source(source: dict, state_manager: StateManager, notifier) -> bool:
         # Check if this is a new article
         if state.last_article is None:
             print(f"\n  First check for this source - recording article")
+            print(f"  → Notification: NOT sent (first check, establishing baseline)")
             state.last_article = article
             state.error_count = 0
             state.last_error = None
@@ -77,13 +79,24 @@ def check_source(source: dict, state_manager: StateManager, notifier) -> bool:
             print(f"    URL: {article.url}")
 
             # Send notification
-            notifier.send(source_id, article, state.last_article)
+            print(f"\n  → Notification: Attempting to send...")
+            if notifier.is_enabled():
+                success = notifier.send(source_id, article, state.last_article)
+                if success:
+                    print(f"  → Notification: SENT successfully")
+                else:
+                    print(f"  → Notification: FAILED to send (check error above)")
+            else:
+                print(f"  → Notification: NOT sent (SLACK_WEBHOOK_URL not configured)")
 
             state.last_article = article
             state.error_count = 0
             state.last_error = None
         else:
             print(f"\n  No change (same article as before)")
+            print(f"  → Notification: NOT sent (article URL unchanged)")
+            print(f"    Previous URL: {state.last_article.url}")
+            print(f"    Current URL:  {article.url}")
             state.error_count = 0
             state.last_error = None
 
@@ -94,6 +107,7 @@ def check_source(source: dict, state_manager: StateManager, notifier) -> bool:
 
     except ScraperError as e:
         print(f"\nError scraping source: {e}")
+        print(f"  → Notification: NOT sent (scraping error)")
         state.error_count += 1
         state.last_error = str(e)
         state_manager.save_state(state)
@@ -101,6 +115,7 @@ def check_source(source: dict, state_manager: StateManager, notifier) -> bool:
 
     except Exception as e:
         print(f"\nUnexpected error: {e}")
+        print(f"  → Notification: NOT sent (unexpected error)")
         state.error_count += 1
         state.last_error = f"Unexpected: {str(e)}"
         state_manager.save_state(state)
