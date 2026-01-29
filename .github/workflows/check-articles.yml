@@ -1,4 +1,4 @@
-# name: Check for New Articles
+name: Check for New Articles
 
 on:
   # Run every hour at minute 0
