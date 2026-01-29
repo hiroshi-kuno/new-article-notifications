@@ -1,9 +1,13 @@
 {
   "source_id": "Artur-Galocha",
-  "last_article": null,
-  "last_checked": "2026-01-29T07:10:28.640801Z",
+  "last_article": {
+    "title": "They survived a Cybertruck crash. An inferno led to a race against time.",
+    "url": "https://www.washingtonpost.com/technology/interactive/2025/cybertruck-crash-design-lawsuit/",
+    "published_time": "2025-12-22T10:00:45Z"
+  },
+  "last_checked": "2026-01-29T07:33:35.287858Z",
   "etag": null,
   "last_modified": null,
-  "error_count": 1,
-  "last_error": "Request timeout after 15s"
+  "error_count": 0,
+  "last_error": null
 }
