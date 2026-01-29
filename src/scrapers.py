@@ -23,8 +23,8 @@ class ScraperError(Exception):
     pass
 
 
-class GenericHTMLScraper:
-    """Generic scraper for HTML pages (works for NYT, GIJN, Datawrapper, etc)."""
+class NYTReporterScraper:
+    """Scraper for New York Times reporter pages."""
 
     def __init__(self):
         """Initialize the scraper."""
@@ -118,78 +118,50 @@ class GenericHTMLScraper:
 
     def _parse_strategy_1(self, soup: BeautifulSoup) -> Optional[Dict]:
         """Primary parsing strategy: Look for article list items."""
-        # Many sites use <ol> or <ul> with <li> containing articles
+        # NYT often uses <ol> with <li> containing articles
         # Each article typically has a link with specific CSS classes
 
-        # Try finding article lists
-        article_lists = soup.find_all(['ol', 'ul'])
-        for list_elem in article_lists:
-            # Find first article link - be more flexible with URL patterns
-            link = list_elem.find('a', href=lambda x: x and len(x) > 5 and ('http' in x or x.startswith('/')))
+        # Try finding article list
+        article_lists = soup.find_all('ol')
+        for ol in article_lists:
+            # Find first article link
+            link = ol.find('a', href=lambda x: x and '/20' in x and x.startswith('/'))
             if link and link.get('href'):
-                # Look for title in various places
-                title_elem = link.find(['h3', 'h2', 'h4', 'h1', 'h5'])
-                if not title_elem:
-                    # Title might be in the link text itself
-                    title_text = link.get_text(strip=True)
-                    if len(title_text) > 10:
-                        title = title_text
-                    else:
-                        continue
-                else:
+                title_elem = link.find('h3') or link.find('h2') or link.find('h4')
+                if title_elem:
                     title = title_elem.get_text(strip=True)
+                    url = link['href']
 
-                if not title or len(title) < 5:
-                    continue
-
-                url = link['href']
-
-                # Make URL absolute if needed
-                if url.startswith('/'):
-                    # Try to determine the base URL from the page
-                    base_url = soup.find('meta', property='og:url')
-                    if base_url and base_url.get('content'):
-                        from urllib.parse import urlparse
-                        parsed = urlparse(base_url['content'])
-                        url = f"{parsed.scheme}://{parsed.netloc}{url}"
-                    elif 'nytimes.com' in str(soup)[:1000]:
+                    # Make URL absolute if needed
+                    if url.startswith('/'):
                         url = 'https://www.nytimes.com' + url
-                    elif 'gijn.org' in str(soup)[:1000]:
-                        url = 'https://gijn.org' + url
-                    elif 'datawrapper.de' in str(soup)[:1000]:
-                        url = 'https://www.datawrapper.de' + url
 
-                # Try to find publication time
-                time_elem = None
-                parent = link.find_parent(['li', 'article', 'div'])
-                if parent:
-                    time_elem = parent.find('time')
+                    # Try to find publication time
+                    time_elem = None
+                    parent = link.find_parent('li')
+                    if parent:
+                        time_elem = parent.find('time')
 
-                pub_time = time_elem.get('datetime') if time_elem else None
+                    pub_time = time_elem.get('datetime') if time_elem else None
 
-                return {
-                    'title': title,
-                    'url': url,
-                    'published_time': pub_time
-                }
+                    return {
+                        'title': title,
+                        'url': url,
+                        'published_time': pub_time
+                    }
 
         return None
 
     def _parse_strategy_2(self, soup: BeautifulSoup) -> Optional[Dict]:
         """Secondary strategy: Look for article containers with specific patterns."""
         # Try finding divs or sections that might contain articles
-        containers = soup.find_all(['div', 'section', 'article', 'main'])
+        containers = soup.find_all(['div', 'section', 'article'])
 
         for container in containers:
-            # Look for links that might be articles
-            links = container.find_all('a', href=lambda x: x and len(x) > 5)
+            # Look for a link that looks like an article
+            links = container.find_all('a', href=lambda x: x and '/20' in x)
             for link in links:
                 if not link.get('href'):
-                    continue
-
-                href = link['href']
-                # Skip navigation, social media, and other non-article links
-                if any(skip in href.lower() for skip in ['facebook.com', 'twitter.com', 'linkedin.com', '#', 'mailto:', 'javascript:']):
                     continue
 
                 # Look for title in various heading tags
@@ -197,16 +169,9 @@ class GenericHTMLScraper:
                 if title_elem:
                     title = title_elem.get_text(strip=True)
                     if len(title) > 10:  # Reasonable title length
-                        url = href
-
-                        # Make URL absolute if needed
+                        url = link['href']
                         if url.startswith('/'):
-                            if 'nytimes.com' in str(soup)[:1000]:
-                                url = 'https://www.nytimes.com' + url
-                            elif 'gijn.org' in str(soup)[:1000]:
-                                url = 'https://gijn.org' + url
-                            elif 'datawrapper.de' in str(soup)[:1000]:
-                                url = 'https://www.datawrapper.de' + url
+                            url = 'https://www.nytimes.com' + url
 
                         # Try to find time
                         time_elem = container.find('time')
@@ -449,6 +414,198 @@ class RSSScraper:
         return article, new_etag, new_last_modified
 
 
+class GenericHTMLScraper:
+    """Generic scraper for HTML pages (GIJN, Datawrapper, etc)."""
+
+    def __init__(self):
+        """Initialize the scraper."""
+        self.session = requests.Session()
+        self.session.headers.update({
+            'User-Agent': USER_AGENT,
+            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+            'Accept-Language': 'en-US,en;q=0.9',
+            'Accept-Encoding': 'gzip, deflate',
+            'DNT': '1',
+            'Connection': 'keep-alive',
+            'Upgrade-Insecure-Requests': '1'
+        })
+
+    def fetch_page(
+        self,
+        url: str,
+        etag: Optional[str] = None,
+        last_modified: Optional[str] = None
+    ) -> tuple[Optional[str], Optional[str], Optional[str]]:
+        """Fetch a page with conditional request headers.
+
+        Args:
+            url: URL to fetch
+            etag: ETag from previous request (if any)
+            last_modified: Last-Modified from previous request (if any)
+
+        Returns:
+            Tuple of (html_content, new_etag, new_last_modified)
+            Returns (None, None, None) if page not modified (304)
+
+        Raises:
+            ScraperError: If request fails
+        """
+        headers = {}
+        if etag:
+            headers['If-None-Match'] = etag
+        if last_modified:
+            headers['If-Modified-Since'] = last_modified
+
+        try:
+            response = self.session.get(
+                url,
+                headers=headers,
+                timeout=REQUEST_TIMEOUT,
+                allow_redirects=True
+            )
+
+            # Handle 304 Not Modified
+            if response.status_code == 304:
+                print(f"  Page not modified (304), skipping parse")
+                return None, etag, last_modified
+
+            # Handle other errors
+            if response.status_code != 200:
+                raise ScraperError(f"HTTP {response.status_code}")
+
+            # Extract caching headers for next request
+            new_etag = response.headers.get('ETag')
+            new_last_modified = response.headers.get('Last-Modified')
+
+            return response.text, new_etag, new_last_modified
+
+        except requests.Timeout:
+            raise ScraperError(f"Request timeout after {REQUEST_TIMEOUT}s")
+        except requests.RequestException as e:
+            raise ScraperError(f"Request failed: {str(e)}")
+
+    def parse_top_article(self, html: str, base_url: str) -> Optional[Article]:
+        """Parse the top article from an HTML page.
+
+        Args:
+            html: HTML content of the page
+            base_url: Base URL for resolving relative URLs
+
+        Returns:
+            Article object or None if no article found
+        """
+        soup = BeautifulSoup(html, 'html.parser')
+        from urllib.parse import urljoin
+
+        # Strategy 1: Look for article lists (most reliable)
+        article_lists = soup.find_all(['ol', 'ul', 'div'], class_=lambda x: x and ('post' in x.lower() or 'article' in x.lower() or 'entry' in x.lower()))
+        for list_elem in article_lists:
+            link = list_elem.find('a', href=lambda x: x and len(x) > 5)
+            if link and link.get('href'):
+                href = link['href']
+                # Skip non-article links
+                if any(skip in href.lower() for skip in ['#', 'mailto:', 'javascript:', 'facebook.com', 'twitter.com', 'linkedin.com']):
+                    continue
+
+                # Look for title
+                title_elem = link.find(['h1', 'h2', 'h3', 'h4', 'h5'])
+                if not title_elem:
+                    # Try getting text from link itself
+                    title = link.get_text(strip=True)
+                else:
+                    title = title_elem.get_text(strip=True)
+
+                if title and len(title) > 10:
+                    url = urljoin(base_url, href)
+
+                    # Try to find publication time
+                    time_elem = list_elem.find('time')
+                    pub_time = time_elem.get('datetime') if time_elem else None
+
+                    return Article(
+                        title=title,
+                        url=url,
+                        published_time=pub_time
+                    )
+
+        # Strategy 2: Look for <article> tags
+        articles = soup.find_all('article')
+        for article_elem in articles:
+            link = article_elem.find('a', href=lambda x: x and len(x) > 5)
+            if link and link.get('href'):
+                href = link['href']
+                if any(skip in href.lower() for skip in ['#', 'mailto:', 'javascript:']):
+                    continue
+
+                title_elem = article_elem.find(['h1', 'h2', 'h3', 'h4', 'h5'])
+                if title_elem:
+                    title = title_elem.get_text(strip=True)
+                    if len(title) > 10:
+                        url = urljoin(base_url, href)
+                        time_elem = article_elem.find('time')
+                        pub_time = time_elem.get('datetime') if time_elem else None
+
+                        return Article(
+                            title=title,
+                            url=url,
+                            published_time=pub_time
+                        )
+
+        # Strategy 3: Find first meaningful heading with a link
+        headings = soup.find_all(['h1', 'h2', 'h3'], limit=10)
+        for heading in headings:
+            link = heading.find('a', href=lambda x: x and len(x) > 5)
+            if link and link.get('href'):
+                href = link['href']
+                if any(skip in href.lower() for skip in ['#', 'mailto:', 'javascript:']):
+                    continue
+
+                title = heading.get_text(strip=True)
+                if len(title) > 10:
+                    url = urljoin(base_url, href)
+                    return Article(
+                        title=title,
+                        url=url,
+                        published_time=None
+                    )
+
+        return None
+
+    def scrape(
+        self,
+        url: str,
+        etag: Optional[str] = None,
+        last_modified: Optional[str] = None
+    ) -> tuple[Optional[Article], Optional[str], Optional[str]]:
+        """Scrape the top article from a page.
+
+        Args:
+            url: URL of the page
+            etag: ETag from previous request
+            last_modified: Last-Modified from previous request
+
+        Returns:
+            Tuple of (Article or None, new_etag, new_last_modified)
+
+        Raises:
+            ScraperError: If scraping fails
+        """
+        # Fetch the page
+        html, new_etag, new_last_modified = self.fetch_page(url, etag, last_modified)
+
+        # If page not modified, return None
+        if html is None:
+            return None, new_etag, new_last_modified
+
+        # Parse the top article
+        article = self.parse_top_article(html, url)
+
+        # Sleep to be respectful
+        time.sleep(REQUEST_DELAY)
+
+        return article, new_etag, new_last_modified
+
+
 def get_scraper(url: str):
     """Factory function to get appropriate scraper for URL.
 
@@ -464,9 +621,11 @@ def get_scraper(url: str):
     # Check for RSS feed URLs
     if '/rss/' in url.lower() or url.endswith('.rss') or url.endswith('.xml'):
         return RSSScraper()
-    # Check for HTML pages (NYT, GIJN, Datawrapper, etc)
-    elif any(domain in url for domain in ['nytimes.com', 'gijn.org', 'datawrapper.de', 'washingtonpost.com']):
+    # Check for NYT reporter pages (use specialized scraper)
+    elif 'nytimes.com/by/' in url:
+        return NYTReporterScraper()
+    # Check for other HTML pages (GIJN, Datawrapper, etc)
+    elif any(domain in url for domain in ['gijn.org', 'datawrapper.de']):
         return GenericHTMLScraper()
     else:
-        # Default to generic HTML scraper for unknown sites
-        return GenericHTMLScraper()
+        raise ValueError(f"No scraper available for URL: {url}")
