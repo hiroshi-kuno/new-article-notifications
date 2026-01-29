@@ -5,9 +5,9 @@
     "url": "https://www.washingtonpost.com/sports/interactive/2025/nfl-playoff-odds-standings-predictions-2025-26/",
     "published_time": "2026-01-20T16:19:24Z"
   },
-  "last_checked": "2026-01-29T13:53:04.275918Z",
+  "last_checked": "2026-01-29T14:33:22.353086Z",
   "etag": null,
   "last_modified": null,
-  "error_count": 0,
-  "last_error": null
+  "error_count": 1,
+  "last_error": "Request timeout after 15s"
 }
