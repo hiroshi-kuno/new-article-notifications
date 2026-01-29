@@ -5,9 +5,9 @@
     "url": "https://www.washingtonpost.com/health/2025/05/30/maha-report-ai-white-house/",
     "published_time": "2025-05-31T00:30:31Z"
   },
-  "last_checked": "2026-01-29T07:35:33.732999Z",
+  "last_checked": "2026-01-29T08:27:57.764051Z",
   "etag": null,
   "last_modified": null,
-  "error_count": 0,
-  "last_error": null
+  "error_count": 1,
+  "last_error": "Request timeout after 15s"
 }

@@ -1,9 +1,13 @@
 {
   "source_id": "Shelly-Tan",
-  "last_article": null,
-  "last_checked": "2026-01-29T07:42:32.196051Z",
+  "last_article": {
+    "title": "Oscar nominations: ‘Sinners,’ ‘One Battle After Another’ lead with most nods",
+    "url": "https://www.washingtonpost.com",
+    "published_time": "2026-01-22T15:01:52Z"
+  },
+  "last_checked": "2026-01-29T08:34:55.691247Z",
   "etag": null,
   "last_modified": null,
-  "error_count": 2,
-  "last_error": "Request timeout after 15s"
+  "error_count": 0,
+  "last_error": null
 }
