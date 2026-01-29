@@ -1,24 +1,24 @@
 #!/usr/bin/env python3
-"""Test script for Slack notifications."""
+"""Test script for Discord notifications."""
 import sys
 import os
 
-from src.notifications import SlackNotifier
+from src.notifications import DiscordNotifier
 from src.models import Article
 
 
-def test_slack_notification():
-    """Send a test notification to Slack."""
+def test_discord_notification():
+    """Send a test notification to Discord."""
     print("=" * 60)
-    print("Slack Notification Test")
+    print("Discord Notification Test")
     print("=" * 60)
 
     # Check if webhook URL is set
-    webhook_url = os.environ.get('SLACK_WEBHOOK_URL')
+    webhook_url = os.environ.get('DISCORD_WEBHOOK_URL')
     if not webhook_url:
-        print("\n❌ SLACK_WEBHOOK_URL environment variable is not set")
+        print("\n❌ DISCORD_WEBHOOK_URL environment variable is not set")
         print("\nTo test, run:")
-        print('  export SLACK_WEBHOOK_URL="https://hooks.slack.com/services/..."')
+        print('  export DISCORD_WEBHOOK_URL="https://discord.com/api/webhooks/..."')
         print("  python test_slack.py")
         return 1
 
@@ -49,10 +49,10 @@ def test_slack_notification():
 
     # Send notification
     print("\n" + "-" * 60)
-    print("Sending test notification to Slack...")
+    print("Sending test notification to Discord...")
     print("-" * 60)
 
-    notifier = SlackNotifier(webhook_url)
+    notifier = DiscordNotifier(webhook_url)
     success = notifier.send(
         source_id="test-source",
         article=new_article,
@@ -65,7 +65,7 @@ def test_slack_notification():
         print("✅ SUCCESS!")
         print("=" * 60)
         print("\nTest notification sent successfully!")
-        print("Check your Slack channel for the message.")
+        print("Check your Discord channel for the message.")
         return 0
     else:
         print("=" * 60)
@@ -77,4 +77,4 @@ def test_slack_notification():
 
 
 if __name__ == "__main__":
-    sys.exit(test_slack_notification())
+    sys.exit(test_discord_notification())

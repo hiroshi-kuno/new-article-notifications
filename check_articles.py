@@ -87,7 +87,7 @@ def check_source(source: dict, state_manager: StateManager, notifier) -> bool:
                 else:
                     print(f"  → Notification: FAILED to send (check error above)")
             else:
-                print(f"  → Notification: NOT sent (SLACK_WEBHOOK_URL not configured)")
+                print(f"  → Notification: NOT sent (DISCORD_WEBHOOK_URL not configured)")
 
             state.last_article = article
             state.error_count = 0
@@ -146,9 +146,9 @@ def main():
         # Initialize notifier
         notifier = get_notifier()
         if notifier.is_enabled():
-            print(f"\n✓ Slack notifications enabled")
+            print(f"\n✓ Discord notifications enabled")
         else:
-            print(f"\n⚠ Slack notifications disabled (SLACK_WEBHOOK_URL not set)")
+            print(f"\n⚠ Discord notifications disabled (DISCORD_WEBHOOK_URL not set)")
 
         # Check each source
         results = []

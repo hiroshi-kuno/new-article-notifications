@@ -11,19 +11,19 @@ class NotificationError(Exception):
     pass
 
 
-class SlackNotifier:
-    """Send notifications to Slack via Incoming Webhooks."""
+class DiscordNotifier:
+    """Send notifications to Discord via Incoming Webhooks."""
 
     def __init__(self, webhook_url: Optional[str] = None):
-        """Initialize Slack notifier.
+        """Initialize Discord notifier.
 
         Args:
-            webhook_url: Slack webhook URL (if None, reads from SLACK_WEBHOOK_URL env var)
+            webhook_url: Discord webhook URL (if None, reads from DISCORD_WEBHOOK_URL env var)
         """
-        self.webhook_url = webhook_url or os.environ.get('SLACK_WEBHOOK_URL')
+        self.webhook_url = webhook_url or os.environ.get('DISCORD_WEBHOOK_URL')
 
     def is_enabled(self) -> bool:
-        """Check if Slack notifications are enabled.
+        """Check if Discord notifications are enabled.
 
         Returns:
             True if webhook URL is configured
@@ -45,32 +45,32 @@ class SlackNotifier:
             return False
 
         try:
-            # Build Slack message
+            # Build Discord message
             message = self._build_message(source_id, article, previous_article)
 
-            # Send to Slack
+            # Send to Discord
             response = requests.post(
                 self.webhook_url,
                 json=message,
                 timeout=10
             )
 
-            if response.status_code == 200:
-                print(f"  ✓ Slack notification sent")
+            if response.status_code == 204:
+                print(f"  ✓ Discord notification sent")
                 return True
             else:
-                print(f"  ✗ Slack notification failed: HTTP {response.status_code}")
+                print(f"  ✗ Discord notification failed: HTTP {response.status_code}")
                 return False
 
         except requests.RequestException as e:
-            print(f"  ✗ Slack notification error: {e}")
+            print(f"  ✗ Discord notification error: {e}")
             return False
         except Exception as e:
-            print(f"  ✗ Unexpected error sending Slack notification: {e}")
+            print(f"  ✗ Unexpected error sending Discord notification: {e}")
             return False
 
     def _build_message(self, source_id: str, article: Article, previous_article: Optional[Article]) -> dict:
-        """Build Slack message payload.
+        """Build Discord message payload.
 
         Args:
             source_id: ID of the source
@@ -78,80 +78,63 @@ class SlackNotifier:
             previous_article: Previous article (optional)
 
         Returns:
-            Slack message payload
+            Discord message payload
         """
-        # Determine site type
+        # Determine site type and color
         site_emoji = "📰"
+        embed_color = 0x5865F2  # Discord blurple
         if "nytimes.com" in article.url:
             site_emoji = "🗽"
+            embed_color = 0x000000  # Black for NYT
         elif "washingtonpost.com" in article.url:
             site_emoji = "🏛️"
+            embed_color = 0x14171A  # Dark for WaPo
 
-        # Build text
-        text = f"{site_emoji} *New article from {source_id}*"
-
-        # Build blocks for rich formatting
-        blocks = [
+        # Build embed fields
+        fields = [
             {
-                "type": "header",
-                "text": {
-                    "type": "plain_text",
-                    "text": f"{site_emoji} New Article: {source_id}",
-                    "emoji": True
-                }
+                "name": "Title",
+                "value": article.title,
+                "inline": False
             },
             {
-                "type": "section",
-                "fields": [
-                    {
-                        "type": "mrkdwn",
-                        "text": f"*Title:*\n{article.title}"
-                    },
-                    {
-                        "type": "mrkdwn",
-                        "text": f"*URL:*\n<{article.url}|View Article>"
-                    }
-                ]
+                "name": "URL",
+                "value": f"[View Article]({article.url})",
+                "inline": False
             }
         ]
 
         # Add publication time if available
         if article.published_time:
-            blocks.append({
-                "type": "section",
-                "fields": [
-                    {
-                        "type": "mrkdwn",
-                        "text": f"*Published:*\n{article.published_time}"
-                    }
-                ]
+            fields.append({
+                "name": "Published",
+                "value": article.published_time,
+                "inline": False
             })
 
-        # Add previous article info if available
+        # Build embed
+        embed = {
+            "title": f"{site_emoji} New Article: {source_id}",
+            "color": embed_color,
+            "fields": fields
+        }
+
+        # Add footer with previous article info if available
         if previous_article:
-            blocks.append({
-                "type": "context",
-                "elements": [
-                    {
-                        "type": "mrkdwn",
-                        "text": f"Previous: _{previous_article.title}_"
-                    }
-                ]
-            })
-
-        # Add divider
-        blocks.append({"type": "divider"})
+            embed["footer"] = {
+                "text": f"Previous: {previous_article.title}"
+            }
 
         return {
-            "text": text,
-            "blocks": blocks
+            "content": f"{site_emoji} New article from {source_id}",
+            "embeds": [embed]
         }
 
 
-def get_notifier() -> SlackNotifier:
+def get_notifier() -> DiscordNotifier:
     """Get the configured notifier.
 
     Returns:
-        SlackNotifier instance
+        DiscordNotifier instance
     """
-    return SlackNotifier()
+    return DiscordNotifier()
