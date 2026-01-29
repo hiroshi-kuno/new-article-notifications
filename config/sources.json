@@ -283,6 +283,14 @@
     {
       "url": "https://www.washingtonpost.com/arcio/rss/author/Yan-Wu",
       "enabled": true
+    },
+    {
+      "url": "https://gijn.org/topic/data-journalism-top-10/",
+      "enabled": true
+    },
+    {
+      "url": "https://www.datawrapper.de/blog/category/data-vis-dispatch",
+      "enabled": true
     }
   ]
 }
