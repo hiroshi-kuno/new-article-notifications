@@ -1,17 +1,17 @@
-name: Check for New Articles
+# name: Check for New Articles
 
 on:
   # Run every hour at minute 0
   schedule:
-    - cron: '0 * * * *'
+    - cron: "0 * * * *"
 
   # Allow manual triggering
   workflow_dispatch:
 
-  # Run on pushes to main (for testing)
-  push:
-    branches:
-      - main
+  # # Run on pushes to main (for testing)
+  # push:
+  #   branches:
+  #     - main
 
 # Required permissions for committing state changes
 permissions:
@@ -31,8 +31,8 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
-          cache: 'pip'
+          python-version: "3.11"
+          cache: "pip"
 
       - name: Install dependencies
         run: |
