@@ -5,9 +5,9 @@
     "url": "https://www.washingtonpost.com/politics/interactive/2020/biden-appointee-tracker/",
     "published_time": "2025-01-17T15:57:06Z"
   },
-  "last_checked": "2026-01-31T10:16:35.016359Z",
+  "last_checked": "2026-01-31T11:16:55.379582Z",
   "etag": null,
   "last_modified": null,
-  "error_count": 0,
-  "last_error": null
+  "error_count": 1,
+  "last_error": "Request timeout after 15s"
 }
