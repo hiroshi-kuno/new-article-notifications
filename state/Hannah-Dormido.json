@@ -5,9 +5,9 @@
     "url": "https://www.washingtonpost.com/politics/2026/01/31/trump-arch-memorial-circle/",
     "published_time": "2026-01-31T10:00:46Z"
   },
-  "last_checked": "2026-01-31T15:16:38.159246Z",
+  "last_checked": "2026-01-31T16:18:11.485538Z",
   "etag": null,
   "last_modified": null,
-  "error_count": 0,
-  "last_error": null
+  "error_count": 1,
+  "last_error": "Request timeout after 15s"
 }
