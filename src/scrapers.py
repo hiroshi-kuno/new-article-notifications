@@ -358,6 +358,10 @@ class RSSScraper:
         if not url:
             return None
 
+        # Skip if URL is exactly the Washington Post homepage
+        if url == 'https://www.washingtonpost.com':
+            return None
+
         # Extract publication time
         # RSS feeds can have 'published' or 'updated' or 'pubDate'
         pub_time = None
