@@ -5,9 +5,9 @@
     "url": "https://www.washingtonpost.com/food/interactive/2025/recipe-ingredient-quiz/",
     "published_time": "2025-11-26T11:00:36Z"
   },
-  "last_checked": "2026-02-02T14:34:37.017163Z",
+  "last_checked": "2026-02-02T15:30:30.030458Z",
   "etag": null,
   "last_modified": null,
-  "error_count": 0,
-  "last_error": null
+  "error_count": 1,
+  "last_error": "Request timeout after 15s"
 }
