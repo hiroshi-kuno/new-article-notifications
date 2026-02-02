@@ -5,9 +5,9 @@
     "url": "https://www.washingtonpost.com/politics/interactive/2025/trump-appointee-tracker/",
     "published_time": "2026-01-29T19:17:10Z"
   },
-  "last_checked": "2026-02-02T11:29:49.155906Z",
+  "last_checked": "2026-02-02T12:31:18.562406Z",
   "etag": null,
   "last_modified": null,
-  "error_count": 0,
-  "last_error": null
+  "error_count": 1,
+  "last_error": "Request timeout after 15s"
 }
