@@ -628,8 +628,8 @@ def get_scraper(url: str):
     # Check for NYT reporter pages (use specialized scraper)
     elif 'nytimes.com/by/' in url:
         return NYTReporterScraper()
-    # Check for other HTML pages (GIJN, Datawrapper, etc)
-    elif any(domain in url for domain in ['gijn.org', 'datawrapper.de']):
+    # Check for other HTML pages (GIJN, Datawrapper, Reuters, etc)
+    elif any(domain in url for domain in ['gijn.org', 'datawrapper.de', 'reuters.com']):
         return GenericHTMLScraper()
     else:
         raise ValueError(f"No scraper available for URL: {url}")

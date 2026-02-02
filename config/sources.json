@@ -291,6 +291,10 @@
     {
       "url": "https://www.datawrapper.de/blog/category/data-vis-dispatch",
       "enabled": true
+    },
+    {
+      "url": "https://www.reuters.com/graphics/",
+      "enabled": true
     }
   ]
 }
