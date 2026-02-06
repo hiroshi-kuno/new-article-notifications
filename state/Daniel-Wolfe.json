@@ -5,9 +5,9 @@
     "url": "https://www.washingtonpost.com/climate-environment/interactive/2026/gas-stoves-no2-lookup/",
     "published_time": "2026-01-25T10:00:02Z"
   },
-  "last_checked": "2026-02-06T10:30:27.541363Z",
+  "last_checked": "2026-02-06T11:27:19.415527Z",
   "etag": null,
   "last_modified": null,
-  "error_count": 0,
-  "last_error": null
+  "error_count": 1,
+  "last_error": "Request timeout after 15s"
 }
