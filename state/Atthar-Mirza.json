@@ -5,9 +5,9 @@
     "url": "https://www.washingtonpost.com/world/interactive/2023/iran-protests-funerals-mahsa-amini/",
     "published_time": "2023-04-21T04:01:19Z"
   },
-  "last_checked": "2026-02-08T18:20:54.623192Z",
+  "last_checked": "2026-02-08T19:18:49.284354Z",
   "etag": null,
   "last_modified": null,
-  "error_count": 0,
-  "last_error": null
+  "error_count": 1,
+  "last_error": "Request timeout after 15s"
 }
