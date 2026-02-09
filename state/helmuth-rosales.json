@@ -5,9 +5,9 @@
     "url": "https://www.nytimes.com/interactive/2026/01/24/us/minneapolis-shooting-alex-pretti-timeline.html",
     "published_time": null
   },
-  "last_checked": "2026-02-09T21:27:59.529047Z",
+  "last_checked": "2026-02-09T22:23:35.131523Z",
   "etag": null,
   "last_modified": "Mon, 09 Feb 2026 20:27:38 GMT",
-  "error_count": 0,
-  "last_error": null
+  "error_count": 1,
+  "last_error": "HTTP 503"
 }
