@@ -5,9 +5,9 @@
     "url": "https://www.washingtonpost.com/technology/2026/02/09/trump-administration-ai-push/",
     "published_time": "2026-02-09T10:00:00Z"
   },
-  "last_checked": "2026-02-09T11:45:25.011950Z",
+  "last_checked": "2026-02-09T12:44:45.173453Z",
   "etag": null,
   "last_modified": null,
-  "error_count": 0,
-  "last_error": null
+  "error_count": 1,
+  "last_error": "Request timeout after 15s"
 }
