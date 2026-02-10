@@ -5,9 +5,9 @@
     "url": "https://www.washingtonpost.com/wellness/interactive/2026/healthy-eating-longevity-quiz/",
     "published_time": "2026-01-01T10:00:09Z"
   },
-  "last_checked": "2026-02-10T20:32:26.967555Z",
+  "last_checked": "2026-02-10T21:32:26.148603Z",
   "etag": null,
   "last_modified": null,
-  "error_count": 4,
-  "last_error": "Request timeout after 15s"
+  "error_count": 5,
+  "last_error": "HTTP 404"
 }
