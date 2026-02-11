@@ -5,9 +5,9 @@
     "url": "https://www.nytimes.com/2026/02/11/us/ice-agents-hiring-immigration-system.html",
     "published_time": null
   },
-  "last_checked": "2026-02-11T22:17:17.691916Z",
+  "last_checked": "2026-02-11T23:19:36.698050Z",
   "etag": null,
   "last_modified": "Wed, 11 Feb 2026 21:43:38 GMT",
-  "error_count": 0,
-  "last_error": null
+  "error_count": 1,
+  "last_error": "HTTP 500"
 }

@@ -5,9 +5,9 @@
     "url": "https://www.nytimes.com/interactive/2024/08/27/business/economy/jobs-election-county.html",
     "published_time": null
   },
-  "last_checked": "2026-02-11T22:17:38.664321Z",
+  "last_checked": "2026-02-11T23:19:56.251594Z",
   "etag": null,
   "last_modified": "Wed, 11 Feb 2026 22:17:36 GMT",
-  "error_count": 0,
-  "last_error": null
+  "error_count": 1,
+  "last_error": "HTTP 500"
 }

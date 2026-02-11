@@ -5,9 +5,9 @@
     "url": "https://www.nytimes.com/interactive/2025/10/06/world/middleeast/gaza-loss.html",
     "published_time": null
   },
-  "last_checked": "2026-02-11T22:17:49.994628Z",
+  "last_checked": "2026-02-11T23:20:13.703043Z",
   "etag": null,
   "last_modified": "Wed, 11 Feb 2026 21:24:00 GMT",
-  "error_count": 0,
-  "last_error": null
+  "error_count": 1,
+  "last_error": "HTTP 500"
 }
