@@ -5,9 +5,9 @@
     "url": "https://www.washingtonpost.com/sports/olympics/interactive/2026/winter-olympic-sports-city-access/",
     "published_time": "2026-02-09T11:00:48Z"
   },
-  "last_checked": "2026-02-11T10:40:26.670296Z",
+  "last_checked": "2026-02-11T11:39:14.332227Z",
   "etag": null,
   "last_modified": null,
-  "error_count": 0,
-  "last_error": null
+  "error_count": 1,
+  "last_error": "Request timeout after 15s"
 }
