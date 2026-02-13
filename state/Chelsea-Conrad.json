@@ -5,9 +5,9 @@
     "url": "https://www.washingtonpost.com/wellness/interactive/2026/low-buy-saving-financial-goals/",
     "published_time": "2026-01-18T11:00:00Z"
   },
-  "last_checked": "2026-02-13T11:25:06.216945Z",
+  "last_checked": "2026-02-13T12:31:07.969650Z",
   "etag": null,
   "last_modified": null,
-  "error_count": 0,
-  "last_error": null
+  "error_count": 1,
+  "last_error": "Request timeout after 15s"
 }
