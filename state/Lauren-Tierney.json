@@ -5,9 +5,9 @@
     "url": "https://www.washingtonpost.com/politics/2022/06/24/abortion-state-laws-criminalization-roe/",
     "published_time": "2026-01-06T20:15:24Z"
   },
-  "last_checked": "2026-02-14T20:10:03.774390Z",
+  "last_checked": "2026-02-14T21:21:16.076373Z",
   "etag": null,
   "last_modified": null,
-  "error_count": 0,
-  "last_error": null
+  "error_count": 1,
+  "last_error": "Request timeout after 15s"
 }
