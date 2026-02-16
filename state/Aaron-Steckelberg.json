@@ -5,9 +5,9 @@
     "url": "https://www.washingtonpost.com/politics/2026/02/13/trump-ballroom-new-renderings/",
     "published_time": "2026-02-14T01:26:09Z"
   },
-  "last_checked": "2026-02-16T14:37:09.973201Z",
+  "last_checked": "2026-02-16T15:31:08.574707Z",
   "etag": null,
   "last_modified": null,
-  "error_count": 0,
-  "last_error": null
+  "error_count": 1,
+  "last_error": "Request timeout after 15s"
 }
