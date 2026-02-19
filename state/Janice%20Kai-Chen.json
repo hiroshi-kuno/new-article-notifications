@@ -5,9 +5,9 @@
     "url": "https://www.washingtonpost.com/sports/olympics/interactive/2026/milan-olympics-medal-count-tracker/",
     "published_time": "2026-02-09T19:35:08Z"
   },
-  "last_checked": "2026-02-19T01:04:19.491066Z",
+  "last_checked": "2026-02-19T03:41:07.995700Z",
   "etag": null,
   "last_modified": null,
-  "error_count": 0,
-  "last_error": null
+  "error_count": 1,
+  "last_error": "Request timeout after 15s"
 }
