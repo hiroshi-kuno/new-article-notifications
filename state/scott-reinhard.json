@@ -5,9 +5,9 @@
     "url": "https://www.nytimes.com/interactive/2024/12/15/nyregion/nyc-congestion-pricing-cost.html",
     "published_time": null
   },
-  "last_checked": "2026-02-20T12:28:15.281890Z",
+  "last_checked": "2026-02-20T13:52:11.385645Z",
   "etag": null,
   "last_modified": "Fri, 20 Feb 2026 12:28:12 GMT",
-  "error_count": 0,
-  "last_error": null
+  "error_count": 1,
+  "last_error": "HTTP 500"
 }
