@@ -5,9 +5,9 @@
     "url": "https://www.washingtonpost.com",
     "published_time": "2026-01-22T18:12:51Z"
   },
-  "last_checked": "2026-02-21T21:13:51.328238Z",
+  "last_checked": "2026-02-21T22:04:29.826619Z",
   "etag": null,
   "last_modified": null,
-  "error_count": 1,
-  "last_error": "HTTP 404"
+  "error_count": 2,
+  "last_error": "Request timeout after 15s"
 }
