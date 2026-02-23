@@ -5,9 +5,9 @@
     "url": "https://www.washingtonpost.com/national-security/2026/02/19/trump-iran-attack-military/",
     "published_time": "2026-02-19T21:34:04Z"
   },
-  "last_checked": "2026-02-23T18:50:46.985894Z",
+  "last_checked": "2026-02-23T19:55:56.200878Z",
   "etag": null,
   "last_modified": null,
-  "error_count": 0,
-  "last_error": null
+  "error_count": 1,
+  "last_error": "Request timeout after 15s"
 }
