@@ -5,9 +5,9 @@
     "url": "https://www.washingtonpost.com/investigations/2026/02/24/united-states-iran-buildup/",
     "published_time": "2026-02-24T10:00:27Z"
   },
-  "last_checked": "2026-02-24T12:38:47.035183Z",
+  "last_checked": "2026-02-24T14:08:05.392300Z",
   "etag": null,
   "last_modified": null,
-  "error_count": 0,
-  "last_error": null
+  "error_count": 1,
+  "last_error": "Request timeout after 15s"
 }
