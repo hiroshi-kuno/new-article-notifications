@@ -5,9 +5,9 @@
     "url": "https://www.washingtonpost.com/weather/interactive/2026/see-places-that-have-gotten-most-least-snow-this-winter/",
     "published_time": "2026-02-27T10:00:49Z"
   },
-  "last_checked": "2026-02-28T10:12:14.238030Z",
+  "last_checked": "2026-02-28T11:11:57.343875Z",
   "etag": null,
   "last_modified": null,
-  "error_count": 0,
-  "last_error": null
+  "error_count": 1,
+  "last_error": "Request timeout after 15s"
 }
