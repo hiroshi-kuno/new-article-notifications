@@ -5,9 +5,9 @@
     "url": "https://www.washingtonpost.com/sports/olympics/interactive/2026/olympics-figure-skating-jumps-difficulty/",
     "published_time": "2026-02-10T11:00:15Z"
   },
-  "last_checked": "2026-03-01T20:11:00.791198Z",
+  "last_checked": "2026-03-01T21:21:03.922113Z",
   "etag": null,
   "last_modified": null,
-  "error_count": 0,
-  "last_error": null
+  "error_count": 1,
+  "last_error": "Request timeout after 15s"
 }
