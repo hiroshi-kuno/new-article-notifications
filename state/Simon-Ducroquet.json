@@ -5,9 +5,9 @@
     "url": "https://www.washingtonpost.com/investigations/2026/02/28/where-us-attack-iran-images-video/",
     "published_time": "2026-03-01T01:01:13Z"
   },
-  "last_checked": "2026-03-01T14:25:10.855176Z",
+  "last_checked": "2026-03-01T15:23:32.870052Z",
   "etag": null,
   "last_modified": null,
-  "error_count": 0,
-  "last_error": null
+  "error_count": 1,
+  "last_error": "Request timeout after 15s"
 }
