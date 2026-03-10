@@ -5,9 +5,9 @@
     "url": "https://www.nytimes.com/interactive/2026/02/28/us/tahoe-avalanche-survivors.html",
     "published_time": null
   },
-  "last_checked": "2026-03-10T11:23:38.080597Z",
+  "last_checked": "2026-03-10T12:30:20.429780Z",
   "etag": null,
   "last_modified": "Tue, 10 Mar 2026 10:43:04 GMT",
-  "error_count": 0,
-  "last_error": null
+  "error_count": 1,
+  "last_error": "HTTP 500"
 }
