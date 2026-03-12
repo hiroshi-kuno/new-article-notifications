@@ -5,9 +5,9 @@
     "url": "https://www.washingtonpost.com/wellness/interactive/2022/permanent-standard-time-body-health-benefits/",
     "published_time": "2026-03-06T14:00:00Z"
   },
-  "last_checked": "2026-03-12T06:38:12.838519Z",
+  "last_checked": "2026-03-12T07:38:41.875685Z",
   "etag": null,
   "last_modified": null,
-  "error_count": 32,
-  "last_error": "Request timeout after 15s"
+  "error_count": 33,
+  "last_error": "HTTP 404"
 }
