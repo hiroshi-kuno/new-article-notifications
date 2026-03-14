@@ -87,7 +87,7 @@ def check_source(source: dict, state_manager: StateManager, notifier) -> bool:
                 else:
                     print(f"  → Notification: FAILED to send (check error above)")
             else:
-                print(f"  → Notification: NOT sent (DISCORD_WEBHOOK_URL not configured)")
+                print(f"  → Notification: NOT sent (webhook URL not configured)")
 
             state.last_article = article
             state.error_count = 0
@@ -147,6 +147,12 @@ def main():
         notifier = get_notifier()
         if notifier.is_enabled():
             print(f"\n✓ Discord notifications enabled")
+            if notifier.nyt_webhook_url:
+                print(f"  ✓ NYT-specific webhook (WEBHOOK_URL_NYT) configured")
+            if notifier.wapo_webhook_url:
+                print(f"  ✓ WaPo-specific webhook (WEBHOOK_URL_WAPO) configured")
+            if notifier.blog_webhook_url:
+                print(f"  ✓ Blog-specific webhook (WEBHOOK_URL_BLOG) configured")
         else:
             print(f"\n⚠ Discord notifications disabled (DISCORD_WEBHOOK_URL not set)")
 

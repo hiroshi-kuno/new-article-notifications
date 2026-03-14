@@ -42,6 +42,9 @@ jobs:
       - name: Check for new articles
         env:
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          WEBHOOK_URL_NYT: ${{ secrets.WEBHOOK_URL_NYT }}
+          WEBHOOK_URL_WAPO: ${{ secrets.WEBHOOK_URL_WAPO }}
+          WEBHOOK_URL_BLOG: ${{ secrets.WEBHOOK_URL_BLOG }}
         run: |
           python check_articles.py
 

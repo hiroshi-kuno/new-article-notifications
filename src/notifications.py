@@ -21,6 +21,9 @@ class DiscordNotifier:
             webhook_url: Discord webhook URL (if None, reads from DISCORD_WEBHOOK_URL env var)
         """
         self.webhook_url = webhook_url or os.environ.get('DISCORD_WEBHOOK_URL')
+        self.nyt_webhook_url = os.environ.get('WEBHOOK_URL_NYT')
+        self.wapo_webhook_url = os.environ.get('WEBHOOK_URL_WAPO')
+        self.blog_webhook_url = os.environ.get('WEBHOOK_URL_BLOG')
 
     def is_enabled(self) -> bool:
         """Check if Discord notifications are enabled.
@@ -28,7 +31,7 @@ class DiscordNotifier:
         Returns:
             True if webhook URL is configured
         """
-        return bool(self.webhook_url)
+        return bool(self.webhook_url or self.nyt_webhook_url or self.wapo_webhook_url or self.blog_webhook_url)
 
     def send(self, source_id: str, article: Article, previous_article: Optional[Article] = None) -> bool:
         """Send a notification about a new article.
@@ -48,9 +51,23 @@ class DiscordNotifier:
             # Build Discord message
             message = self._build_message(source_id, article, previous_article)
 
+            # Determine which webhook to use
+            if "nytimes.com" in article.url and self.nyt_webhook_url:
+                webhook_url = self.nyt_webhook_url
+            elif "washingtonpost.com" in article.url and self.wapo_webhook_url:
+                webhook_url = self.wapo_webhook_url
+            elif source_id == "data-vis-dispatch" and self.blog_webhook_url:
+                webhook_url = self.blog_webhook_url
+            else:
+                webhook_url = self.webhook_url
+
+            if not webhook_url:
+                print(f"  ✗ No webhook URL configured for this source")
+                return False
+
             # Send to Discord
             response = requests.post(
-                self.webhook_url,
+                webhook_url,
                 json=message,
                 timeout=10
             )
