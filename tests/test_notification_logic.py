@@ -2,6 +2,7 @@
 """Test notification logic without actual scraping."""
 import sys
 import os
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 # Disable Slack notifications for this test
 if 'SLACK_WEBHOOK_URL' in os.environ:

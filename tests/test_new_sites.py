@@ -1,6 +1,9 @@
 #!/usr/bin/env python3
 """Test script for new sites (GIJN and Datawrapper)."""
 import sys
+import os
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
 from src.scrapers import get_scraper, ScraperError
 
 def test_site(url: str):

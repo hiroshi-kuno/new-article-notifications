@@ -2,6 +2,7 @@
 """Test script for NYT Discord webhook notifications."""
 import sys
 import os
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from src.notifications import DiscordNotifier
 from src.models import Article

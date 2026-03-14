@@ -2,287 +2,358 @@
   "sources": [
     {
       "url": "https://www.nytimes.com/by/agnes-chang",
-      "enabled": true
+      "enabled": true,
+      "webhook": "WEBHOOK_URL_NYT"
     },
     {
       "url": "https://www.nytimes.com/by/alexander-cardia",
-      "enabled": true
+      "enabled": true,
+      "webhook": "WEBHOOK_URL_NYT"
     },
     {
       "url": "https://www.nytimes.com/by/alicia-parlapiano",
-      "enabled": true
+      "enabled": true,
+      "webhook": "WEBHOOK_URL_NYT"
     },
     {
       "url": "https://www.nytimes.com/by/anjali-singhvi",
-      "enabled": true
+      "enabled": true,
+      "webhook": "WEBHOOK_URL_NYT"
     },
     {
       "url": "https://www.nytimes.com/by/ashley-wu",
-      "enabled": true
+      "enabled": true,
+      "webhook": "WEBHOOK_URL_NYT"
     },
     {
       "url": "https://www.nytimes.com/by/bedel-saget",
-      "enabled": true
+      "enabled": true,
+      "webhook": "WEBHOOK_URL_NYT"
     },
     {
       "url": "https://www.nytimes.com/by/charlie-smart",
-      "enabled": true
+      "enabled": true,
+      "webhook": "WEBHOOK_URL_NYT"
     },
     {
       "url": "https://www.nytimes.com/by/eleanor-lutz",
-      "enabled": true
+      "enabled": true,
+      "webhook": "WEBHOOK_URL_NYT"
     },
     {
       "url": "https://www.nytimes.com/by/elena-shao",
-      "enabled": true
+      "enabled": true,
+      "webhook": "WEBHOOK_URL_NYT"
     },
     {
       "url": "https://www.nytimes.com/by/eli-murray",
-      "enabled": true
+      "enabled": true,
+      "webhook": "WEBHOOK_URL_NYT"
     },
     {
       "url": "https://www.nytimes.com/by/ella-koeze",
-      "enabled": true
+      "enabled": true,
+      "webhook": "WEBHOOK_URL_NYT"
     },
     {
       "url": "https://www.nytimes.com/by/helmuth-rosales",
-      "enabled": true
+      "enabled": true,
+      "webhook": "WEBHOOK_URL_NYT"
     },
     {
       "url": "https://www.nytimes.com/by/jeremy-white",
-      "enabled": true
+      "enabled": true,
+      "webhook": "WEBHOOK_URL_NYT"
     },
     {
       "url": "https://www.nytimes.com/by/jonathan-corum",
-      "enabled": true
+      "enabled": true,
+      "webhook": "WEBHOOK_URL_NYT"
     },
     {
       "url": "https://www.nytimes.com/by/josh-holder",
-      "enabled": true
+      "enabled": true,
+      "webhook": "WEBHOOK_URL_NYT"
     },
     {
       "url": "https://www.nytimes.com/by/josh-williams",
-      "enabled": true
+      "enabled": true,
+      "webhook": "WEBHOOK_URL_NYT"
     },
     {
       "url": "https://www.nytimes.com/by/kk-rebecca-lai",
-      "enabled": true
+      "enabled": true,
+      "webhook": "WEBHOOK_URL_NYT"
     },
     {
       "url": "https://www.nytimes.com/by/karen-yourish",
-      "enabled": true
+      "enabled": true,
+      "webhook": "WEBHOOK_URL_NYT"
     },
     {
       "url": "https://www.nytimes.com/by/karthik-patanjali",
-      "enabled": true
+      "enabled": true,
+      "webhook": "WEBHOOK_URL_NYT"
     },
     {
       "url": "https://www.nytimes.com/by/keith-collins",
-      "enabled": true
+      "enabled": true,
+      "webhook": "WEBHOOK_URL_NYT"
     },
     {
       "url": "https://www.nytimes.com/by/lauren-leatherby",
-      "enabled": true
+      "enabled": true,
+      "webhook": "WEBHOOK_URL_NYT"
     },
     {
       "url": "https://www.nytimes.com/by/lazaro-gamio",
-      "enabled": true
+      "enabled": true,
+      "webhook": "WEBHOOK_URL_NYT"
     },
     {
       "url": "https://www.nytimes.com/by/leanne-abraham",
-      "enabled": true
+      "enabled": true,
+      "webhook": "WEBHOOK_URL_NYT"
     },
     {
       "url": "https://www.nytimes.com/by/malika-khurana",
-      "enabled": true
+      "enabled": true,
+      "webhook": "WEBHOOK_URL_NYT"
     },
     {
       "url": "https://www.nytimes.com/by/marco-hernandez",
-      "enabled": true
+      "enabled": true,
+      "webhook": "WEBHOOK_URL_NYT"
     },
     {
       "url": "https://www.nytimes.com/by/martin-gonzalez-gomez",
-      "enabled": true
+      "enabled": true,
+      "webhook": "WEBHOOK_URL_NYT"
     },
     {
       "url": "https://www.nytimes.com/by/mira-rojanasakul",
-      "enabled": true
+      "enabled": true,
+      "webhook": "WEBHOOK_URL_NYT"
     },
     {
       "url": "https://www.nytimes.com/by/pablo-robles",
-      "enabled": true
+      "enabled": true,
+      "webhook": "WEBHOOK_URL_NYT"
     },
     {
       "url": "https://www.nytimes.com/by/scott-reinhard",
-      "enabled": true
+      "enabled": true,
+      "webhook": "WEBHOOK_URL_NYT"
     },
     {
       "url": "https://www.nytimes.com/by/weiyi-cai",
-      "enabled": true
+      "enabled": true,
+      "webhook": "WEBHOOK_URL_NYT"
     },
     {
       "url": "https://www.nytimes.com/by/yuliya-parshina-kottas",
-      "enabled": true
+      "enabled": true,
+      "webhook": "WEBHOOK_URL_NYT"
     },
     {
       "url": "https://www.washingtonpost.com/arcio/rss/author/Aaron-Steckelberg/",
-      "enabled": true
+      "enabled": true,
+      "webhook": "WEBHOOK_URL_WAPO"
     },
     {
       "url": "https://www.washingtonpost.com/arcio/rss/author/Adri%C3%A1n-Blanco/",
-      "enabled": true
+      "enabled": true,
+      "webhook": "WEBHOOK_URL_WAPO"
     },
     {
       "url": "https://www.washingtonpost.com/arcio/rss/author/Alyssa-Fowers/",
-      "enabled": true
+      "enabled": true,
+      "webhook": "WEBHOOK_URL_WAPO"
     },
     {
       "url": "https://www.washingtonpost.com/arcio/rss/author/Artur-Galocha/",
-      "enabled": true
+      "enabled": true,
+      "webhook": "WEBHOOK_URL_WAPO"
     },
     {
       "url": "https://www.washingtonpost.com/arcio/rss/author/Ashlyn-Still/",
-      "enabled": true
+      "enabled": true,
+      "webhook": "WEBHOOK_URL_WAPO"
     },
     {
       "url": "https://www.washingtonpost.com/arcio/rss/author/Atthar-Mirza/",
-      "enabled": true
+      "enabled": true,
+      "webhook": "WEBHOOK_URL_WAPO"
     },
     {
       "url": "https://www.washingtonpost.com/arcio/rss/author/Bonnie-Berkowitz/",
-      "enabled": true
+      "enabled": true,
+      "webhook": "WEBHOOK_URL_WAPO"
     },
     {
       "url": "https://www.washingtonpost.com/arcio/rss/author/Carson-TerBush/",
-      "enabled": true
+      "enabled": true,
+      "webhook": "WEBHOOK_URL_WAPO"
     },
     {
       "url": "https://www.washingtonpost.com/arcio/rss/author/Chelsea-Conrad",
-      "enabled": true
+      "enabled": true,
+      "webhook": "WEBHOOK_URL_WAPO"
     },
     {
       "url": "https://www.washingtonpost.com/arcio/rss/author/Chris-Alcantara/",
-      "enabled": true
+      "enabled": true,
+      "webhook": "WEBHOOK_URL_WAPO"
     },
     {
       "url": "https://www.washingtonpost.com/arcio/rss/author/Daniel-Wolfe/",
-      "enabled": true
+      "enabled": true,
+      "webhook": "WEBHOOK_URL_WAPO"
     },
     {
       "url": "https://www.washingtonpost.com/arcio/rss/author/Daniela-Santamarina/",
-      "enabled": true
+      "enabled": true,
+      "webhook": "WEBHOOK_URL_WAPO"
     },
     {
       "url": "https://www.washingtonpost.com/arcio/rss/author/Dylan-Moriarty/",
-      "enabled": true
+      "enabled": true,
+      "webhook": "WEBHOOK_URL_WAPO"
     },
     {
       "url": "https://www.washingtonpost.com/arcio/rss/author/Emily-Wright/",
-      "enabled": true
+      "enabled": true,
+      "webhook": "WEBHOOK_URL_WAPO"
     },
     {
       "url": "https://www.washingtonpost.com/arcio/rss/author/Gabriel-Florit/",
-      "enabled": true
+      "enabled": true,
+      "webhook": "WEBHOOK_URL_WAPO"
     },
     {
       "url": "https://www.washingtonpost.com/arcio/rss/author/Greg-Manifold/",
-      "enabled": true
+      "enabled": true,
+      "webhook": "WEBHOOK_URL_WAPO"
     },
     {
       "url": "https://www.washingtonpost.com/arcio/rss/author/Hanna-Zakharenko",
-      "enabled": true
+      "enabled": true,
+      "webhook": "WEBHOOK_URL_WAPO"
     },
     {
       "url": "https://www.washingtonpost.com/arcio/rss/author/Hannah-Dormido",
-      "enabled": true
+      "enabled": true,
+      "webhook": "WEBHOOK_URL_WAPO"
     },
     {
       "url": "https://www.washingtonpost.com/arcio/rss/author/Harry-Stevens/",
-      "enabled": true
+      "enabled": true,
+      "webhook": "WEBHOOK_URL_WAPO"
     },
     {
       "url": "https://www.washingtonpost.com/arcio/rss/author/Imogen-Piper",
-      "enabled": true
+      "enabled": true,
+      "webhook": "WEBHOOK_URL_WAPO"
     },
     {
       "url": "https://www.washingtonpost.com/arcio/rss/author/Janice%20Kai-Chen",
-      "enabled": true
+      "enabled": true,
+      "webhook": "WEBHOOK_URL_WAPO"
     },
     {
       "url": "https://www.washingtonpost.com/arcio/rss/author/Joe-Fox",
-      "enabled": true
+      "enabled": true,
+      "webhook": "WEBHOOK_URL_WAPO"
     },
     {
       "url": "https://www.washingtonpost.com/arcio/rss/author/John-Muyskens",
-      "enabled": true
+      "enabled": true,
+      "webhook": "WEBHOOK_URL_WAPO"
     },
     {
       "url": "https://www.washingtonpost.com/arcio/rss/author/J%C3%BAlia-Ledur",
-      "enabled": true
+      "enabled": true,
+      "webhook": "WEBHOOK_URL_WAPO"
     },
     {
       "url": "https://www.washingtonpost.com/arcio/rss/author/Kati-Perry",
-      "enabled": true
+      "enabled": true,
+      "webhook": "WEBHOOK_URL_WAPO"
     },
     {
       "url": "https://www.washingtonpost.com/arcio/rss/author/Kevin-Schaul",
-      "enabled": true
+      "enabled": true,
+      "webhook": "WEBHOOK_URL_WAPO"
     },
     {
       "url": "https://www.washingtonpost.com/arcio/rss/author/Lauren-Tierney",
-      "enabled": true
+      "enabled": true,
+      "webhook": "WEBHOOK_URL_WAPO"
     },
     {
       "url": "https://www.washingtonpost.com/arcio/rss/author/Leslie-Shapiro",
-      "enabled": true
+      "enabled": true,
+      "webhook": "WEBHOOK_URL_WAPO"
     },
     {
       "url": "https://www.washingtonpost.com/arcio/rss/author/Luis-Melgar",
-      "enabled": true
+      "enabled": true,
+      "webhook": "WEBHOOK_URL_WAPO"
     },
     {
       "url": "https://www.washingtonpost.com/arcio/rss/author/Monica-Ulmanu",
-      "enabled": true
+      "enabled": true,
+      "webhook": "WEBHOOK_URL_WAPO"
     },
     {
       "url": "https://www.washingtonpost.com/arcio/rss/author/Naema-Ahmed",
-      "enabled": true
+      "enabled": true,
+      "webhook": "WEBHOOK_URL_WAPO"
     },
     {
       "url": "https://www.washingtonpost.com/arcio/rss/author/Nick-Mourtoupalas",
-      "enabled": true
+      "enabled": true,
+      "webhook": "WEBHOOK_URL_WAPO"
     },
     {
       "url": "https://www.washingtonpost.com/arcio/rss/author/Niko-Kommenda/",
-      "enabled": true
+      "enabled": true,
+      "webhook": "WEBHOOK_URL_WAPO"
     },
     {
       "url": "https://www.washingtonpost.com/arcio/rss/author/Shelly-Tan",
-      "enabled": true
+      "enabled": true,
+      "webhook": "WEBHOOK_URL_WAPO"
     },
     {
       "url": "https://www.washingtonpost.com/arcio/rss/author/Simon-Ducroquet",
-      "enabled": true
+      "enabled": true,
+      "webhook": "WEBHOOK_URL_WAPO"
     },
     {
       "url": "https://www.washingtonpost.com/arcio/rss/author/Szu%20Yu%20-Chen",
-      "enabled": true
+      "enabled": true,
+      "webhook": "WEBHOOK_URL_WAPO"
     },
     {
       "url": "https://www.washingtonpost.com/arcio/rss/author/Tim-Meko",
-      "enabled": true
+      "enabled": true,
+      "webhook": "WEBHOOK_URL_WAPO"
     },
     {
       "url": "https://www.washingtonpost.com/arcio/rss/author/Veronica-Penney",
-      "enabled": true
+      "enabled": true,
+      "webhook": "WEBHOOK_URL_WAPO"
     },
     {
       "url": "https://www.washingtonpost.com/arcio/rss/author/William-Neff/",
-      "enabled": true
+      "enabled": true,
+      "webhook": "WEBHOOK_URL_WAPO"
     },
     {
       "url": "https://www.washingtonpost.com/arcio/rss/author/Yan-Wu",
-      "enabled": true
+      "enabled": true,
+      "webhook": "WEBHOOK_URL_WAPO"
     },
     {
       "url": "https://gijn.org/topic/data-journalism-top-10/",
@@ -290,7 +361,8 @@
     },
     {
       "url": "https://www.datawrapper.de/blog/category/data-vis-dispatch",
-      "enabled": true
+      "enabled": true,
+      "webhook": "WEBHOOK_URL_BLOG"
     },
     {
       "url": "https://www.reuters.com/graphics/",

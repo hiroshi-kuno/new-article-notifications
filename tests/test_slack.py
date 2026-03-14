@@ -2,6 +2,7 @@
 """Test script for Discord notifications."""
 import sys
 import os
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from src.notifications import DiscordNotifier
 from src.models import Article
@@ -23,7 +24,6 @@ def test_discord_notification():
         return 1
 
     print(f"\n✓ Webhook URL configured")
-    print(f"  URL: {webhook_url[:50]}...")
 
     # Create test articles
     print("\n" + "-" * 60)
@@ -52,7 +52,7 @@ def test_discord_notification():
     print("Sending test notification to Discord...")
     print("-" * 60)
 
-    notifier = DiscordNotifier(webhook_url)
+    notifier = DiscordNotifier()
     success = notifier.send(
         source_id="test-source",
         article=new_article,

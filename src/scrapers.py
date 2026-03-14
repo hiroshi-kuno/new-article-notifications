@@ -610,6 +610,10 @@ class GenericHTMLScraper:
         return article, new_etag, new_last_modified
 
 
+# Domains handled by the generic HTML scraper
+_GENERIC_HTML_DOMAINS = ('gijn.org', 'datawrapper.de', 'reuters.com')
+
+
 def get_scraper(url: str):
     """Factory function to get appropriate scraper for URL.
 
@@ -622,14 +626,10 @@ def get_scraper(url: str):
     Raises:
         ValueError: If URL is not supported
     """
-    # Check for RSS feed URLs
-    if '/rss/' in url.lower() or url.endswith('.rss') or url.endswith('.xml'):
+    if '/rss/' in url.lower() or url.endswith(('.rss', '.xml')):
         return RSSScraper()
-    # Check for NYT reporter pages (use specialized scraper)
-    elif 'nytimes.com/by/' in url:
+    if 'nytimes.com/by/' in url:
         return NYTReporterScraper()
-    # Check for other HTML pages (GIJN, Datawrapper, Reuters, etc)
-    elif any(domain in url for domain in ['gijn.org', 'datawrapper.de', 'reuters.com']):
+    if any(domain in url for domain in _GENERIC_HTML_DOMAINS):
         return GenericHTMLScraper()
-    else:
-        raise ValueError(f"No scraper available for URL: {url}")
+    raise ValueError(f"No scraper available for URL: {url}")

@@ -1,6 +1,9 @@
 #!/usr/bin/env python3
 """Test representative sources from each type."""
 import sys
+import os
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
 from src.config import Config
 from src.state_manager import StateManager
 from src.scrapers import get_scraper, ScraperError
