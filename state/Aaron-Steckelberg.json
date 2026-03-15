@@ -5,9 +5,9 @@
     "url": "https://www.washingtonpost.com/politics/2026/03/15/white-house-columns-ionic-corinthian/",
     "published_time": "2026-03-15T09:00:49Z"
   },
-  "last_checked": "2026-03-15T13:39:42.175999Z",
+  "last_checked": "2026-03-15T14:20:14.692780Z",
   "etag": null,
   "last_modified": null,
-  "error_count": 0,
-  "last_error": null
+  "error_count": 1,
+  "last_error": "Request timeout after 15s"
 }
