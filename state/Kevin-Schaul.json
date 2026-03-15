@@ -5,9 +5,9 @@
     "url": "https://www.washingtonpost.com/technology/interactive/2026/claude-code-cowork-build-apps/",
     "published_time": "2026-03-05T10:00:28Z"
   },
-  "last_checked": "2026-03-15T16:24:45.003062Z",
+  "last_checked": "2026-03-15T17:24:57.977088Z",
   "etag": null,
   "last_modified": null,
-  "error_count": 0,
-  "last_error": null
+  "error_count": 1,
+  "last_error": "Request timeout after 15s"
 }
