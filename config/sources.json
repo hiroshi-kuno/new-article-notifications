@@ -365,6 +365,11 @@
       "webhook": "WEBHOOK_URL_BLOG"
     },
     {
+      "url": "https://www.anychart.com/blog/",
+      "enabled": true,
+      "webhook": "WEBHOOK_URL_BLOG"
+    },
+    {
       "url": "https://www.reuters.com/graphics/",
       "enabled": true
     }

@@ -1,140 +1,125 @@
-# Quick Start Guide
+# クイックスタート
 
-Get the NYT article monitor running in 5 minutes.
+5分でセットアップできるガイドです。
 
-## 1. Install Dependencies
+## 1. 依存ライブラリのインストール
 
 ```bash
 pip install -r requirements.txt
 ```
 
-## 2. Configure Sources
+## 2. 監視ソースの設定
 
-Edit `config/sources.json` to add reporter pages you want to monitor:
+`config/sources.json` を編集して、監視したいページを追加します。
+`webhook` フィールドで通知先を指定できます：
 
 ```json
 {
   "sources": [
     {
       "url": "https://www.nytimes.com/by/agnes-chang",
-      "enabled": true
+      "enabled": true,
+      "webhook": "WEBHOOK_URL_NYT"
     }
   ]
 }
 ```
 
-## 3. Test Locally
+## 3. ローカルでテスト
 
 ```bash
 python check_articles.py
 ```
 
-Check output and verify `state/` directory contains state files.
+実行後、`state/` ディレクトリに状態ファイルが作成されていることを確認してください。
 
-## 4. Deploy to GitHub
+## 4. GitHubにデプロイ
 
 ```bash
-# Initialize git (if not already done)
 git init
 git add .
-git commit -m "Initial commit: NYT article monitor"
+git commit -m "Initial commit"
 
-# Create GitHub repository and push
+# GitHubリポジトリを作成してプッシュ
 gh repo create new-article-notifications --public --source=. --remote=origin --push
-# Or manually:
-# git remote add origin https://github.com/YOUR_USERNAME/YOUR_REPO.git
-# git push -u origin main
 ```
 
-## 5. Enable GitHub Actions
+## 5. GitHub Actionsを有効化
 
-1. Go to your repository on GitHub
-2. Click the "Actions" tab
-3. Click "I understand my workflows, go ahead and enable them"
-4. The workflow will run automatically every hour
+1. GitHubリポジトリの **Actions** タブを開く
+2. 「ワークフローを有効にする」をクリック
+3. 以後、毎時間自動的に実行されます
 
-## 6. Verify It's Working
+## 6. Secretsの設定
 
-After the first run:
+1. リポジトリの **Settings** → **Secrets and variables** → **Actions**
+2. 使用するwebhookのシークレットを追加（例: `WEBHOOK_URL_NYT`）
+
+## 7. 動作確認
+
+初回実行後：
 
 ```bash
 git pull
 cat state/agnes-chang.json
 ```
 
-You should see the latest article data.
+最新の記事データが保存されていれば成功です。
 
-## Common Commands
+## よく使うコマンド
 
 ```bash
-# Run manually
+# 手動実行
 python check_articles.py
 
-# Check state
+# 状態確認
 ls state/
 cat state/*.json
 
-# View logs from GitHub Actions
+# GitHub Actionsのログ確認
 gh run list
 gh run view --log
 
-# Trigger manual run
+# 手動でワークフロー実行
 gh workflow run check-articles.yml
 ```
 
-## What to Expect
+## 実行時の出力例
 
-### First Run
-- Creates state files for each source
-- Records the current top article
-- No "new article" detected (establishing baseline)
+### 初回実行
+- 各ソースの状態ファイルを作成
+- 現在のトップ記事をベースラインとして記録
+- 「新記事」とは検出されない（初回はベースライン取得）
 
-### Subsequent Runs
-- Checks if top article changed
-- If yes: Logs "NEW ARTICLE DETECTED!"
-- If no: Logs "No change" or "Page not modified (304)"
-- Updates state files
+### 2回目以降
+- トップ記事に変化があるか確認
+- 変化あり → `NEW ARTICLE DETECTED!` をログ出力し、Discordに通知
+- 変化なし → `No change` または `Page not modified (304)` をログ出力
 
-### When New Article Published
+### 新記事が検出されたとき
 ```
-NEW ARTICLE DETECTED!
+  NEW ARTICLE DETECTED!
 
-Previous article:
-  Title: Old Article Title
-  URL: https://www.nytimes.com/...
+  Previous article:
+    Title: 旧記事タイトル
+    URL: https://www.nytimes.com/...
 
-New article:
-  Title: Brand New Article Title
-  URL: https://www.nytimes.com/...
+  New article:
+    Title: 新記事タイトル
+    URL: https://www.nytimes.com/...
 ```
 
-## Troubleshooting
+## トラブルシューティング
 
-### No state files created
-- Check write permissions
-- Verify `state/` directory exists
-- Check script output for errors
+### 状態ファイルが作成されない
+- `state/` ディレクトリの書き込み権限を確認
+- スクリプトの出力にエラーがないか確認
 
-### GitHub Actions not running
-- Verify Actions are enabled in Settings
-- Check workflow file syntax
-- Ensure repository has write permissions
+### GitHub Actionsが動かない
+- Settings → Actions → General で Actions が有効になっているか確認
+- ワークフローファイルの構文を確認
+- リポジトリに書き込み権限があるか確認
 
-### Articles not detected
-- DOM structure may have changed
-- Check TESTING.md for debugging steps
-- Open an issue with sample HTML
-
-## Next Steps
-
-- Add more reporter pages to `config/sources.json`
-- Set up notifications (see README.md)
-- Customize check frequency in `.github/workflows/check-articles.yml`
-- Fork and extend for other news sites
-
-## Getting Help
-
-- Read full README.md for details
-- Check TESTING.md for debugging
-- Review GitHub Actions logs
-- Open an issue on GitHub
+### 記事が検出されない
+- DOMの構造が変わった可能性あり
+- `docs/TESTING.md` のデバッグ手順を参照

@@ -1,157 +1,138 @@
-# Architecture Documentation
+# アーキテクチャ
 
-This document explains the internal architecture of the NYT article monitoring system.
+システムの内部構造を説明します。
 
-## System Overview
+## システム概要
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
 │                      GitHub Actions                          │
-│                    (Scheduler/Orchestrator)                  │
+│                  （スケジューラー / オーケストレーター）         │
 └───────────────────────┬─────────────────────────────────────┘
                         │
-                        │ triggers hourly
+                        │ 毎時間トリガー
                         ▼
 ┌─────────────────────────────────────────────────────────────┐
 │                   check_articles.py                          │
-│                  (Main Orchestration)                        │
+│               （メインオーケストレーター）                      │
 └─────┬───────────────────────────────────────────────────────┘
       │
-      │ loads
+      │ 読み込み
       ▼
 ┌─────────────────────────────────────────────────────────────┐
 │                  config/sources.json                         │
-│            (List of reporter pages to monitor)               │
+│        （監視対象のURLリスト・webhook設定）                     │
 └──────────────────────────────────────────────────────────────┘
       │
-      │ for each source
+      │ ソースごとに処理
       ▼
 ┌─────────────────────────────────────────────────────────────┐
 │                    StateManager                              │
-│              (Load previous state)                           │
+│                  （前回の状態を読み込み）                       │
 │                                                              │
 │  state/source-1.json ◄──┐                                   │
-│  state/source-2.json    │ read/write                        │
+│  state/source-2.json    │ 読み書き                           │
 │  state/source-3.json ◄──┘                                   │
 └──────────────────────────────────────────────────────────────┘
       │
-      │ fetch & parse
+      │ 取得・解析
       ▼
 ┌─────────────────────────────────────────────────────────────┐
-│                  NYTReporterScraper                          │
+│                     各種スクレイパー                           │
 │                                                              │
-│  1. HTTP GET with conditional headers                       │
-│     If-None-Match: etag                                     │
-│     If-Modified-Since: date                                 │
+│  1. 条件付きHTTPリクエスト                                     │
+│     If-None-Match: etag                                      │
+│     If-Modified-Since: date                                  │
 │                                                              │
-│  2. Handle 304 Not Modified                                 │
-│     └─> Skip parsing                                        │
+│  2. 304 Not Modified の処理                                   │
+│     └─> パースをスキップ                                       │
 │                                                              │
-│  3. Parse HTML (BeautifulSoup)                              │
-│     ├─> Strategy 1: <ol> lists                             │
-│     ├─> Strategy 2: <div> containers                       │
-│     └─> Strategy 3: Fallback patterns                      │
+│  3. HTML/XML パース                                           │
+│     ├─> Strategy 1: <ol> リスト                              │
+│     ├─> Strategy 2: <div> コンテナ                            │
+│     └─> Strategy 3: フォールバック                             │
 │                                                              │
-│  4. Extract Article                                          │
-│     ├─> title                                               │
-│     ├─> url                                                 │
-│     └─> published_time                                      │
+│  4. Article オブジェクトの抽出                                  │
+│     ├─> title                                                │
+│     ├─> url                                                  │
+│     └─> published_time                                       │
 └──────────────────────────────────────────────────────────────┘
       │
-      │ compare
+      │ 比較
       ▼
 ┌─────────────────────────────────────────────────────────────┐
-│                   Change Detection                           │
+│                     変化検知                                  │
 │                                                              │
-│  IF article.url != state.last_article.url:                  │
-│     NEW ARTICLE DETECTED!                                   │
-│     └─> Update state                                        │
+│  IF article.url != state.last_article.url:                   │
+│     新記事を検出！                                             │
+│     └─> 状態を更新 & Discord通知                              │
 │  ELSE:                                                       │
-│     No change                                               │
+│     変化なし                                                  │
 └──────────────────────────────────────────────────────────────┘
       │
-      │ save
+      │ 保存
       ▼
 ┌─────────────────────────────────────────────────────────────┐
 │                    StateManager                              │
-│                  (Save updated state)                        │
-│                                                              │
-│  state/source-1.json                                        │
-│  state/source-2.json                                        │
-│  state/source-3.json                                        │
+│                  （更新した状態を保存）                         │
 └──────────────────────────────────────────────────────────────┘
       │
-      │ commit & push
+      │ コミット & プッシュ
       ▼
 ┌─────────────────────────────────────────────────────────────┐
-│                      Git Repository                          │
-│              (Persistent state storage)                      │
+│                   Git リポジトリ                              │
+│              （永続的な状態ストレージ）                         │
 └──────────────────────────────────────────────────────────────┘
 ```
 
-## Component Details
+## コンポーネント詳細
 
-### 1. check_articles.py (Main Orchestrator)
+### 1. check_articles.py（メインオーケストレーター）
 
-**Responsibilities:**
-- Load configuration
-- Initialize state manager
-- Loop through all enabled sources
-- Handle errors per-source (isolation)
-- Print summary statistics
-- Exit with appropriate code
+**役割：**
+- 設定の読み込み
+- StateManager の初期化
+- 有効なすべてのソースをループ処理
+- ソースごとのエラー分離
+- サマリーの出力
+- 終了コードの返却
 
-**Error Handling:**
-- Individual source failures don't crash the system
-- Errors are logged and counted
-- System only exits with error if ALL sources fail
+**エラーハンドリング：**
+- 個別ソースの失敗がシステム全体をクラッシュさせない
+- エラーはログに記録・カウント
+- 全ソースが失敗した場合のみエラー終了
 
-**Flow:**
-```python
-def main():
-    config = load_config()
-    state_manager = StateManager()
+### 2. Config（src/config.py）
 
-    for source in config.enabled_sources:
-        try:
-            check_source(source, state_manager)
-        except Exception:
-            log_error()
-            continue  # Don't crash
+**役割：**
+- `sources.json` の読み込み
+- 有効なソースのフィルタリング
+- URLからの source_id 自動抽出
 
-    return exit_code
-```
-
-### 2. Config (src/config.py)
-
-**Responsibilities:**
-- Load sources.json
-- Validate configuration
-- Filter enabled sources
-
-**Data Model:**
+**設定フォーマット：**
 ```json
 {
   "sources": [
     {
-      "url": "https://...",       // Target URL (NYT reporter page)
-      "enabled": true             // On/off switch
+      "url": "https://...",
+      "enabled": true,
+      "webhook": "WEBHOOK_URL_NYT"
     }
   ]
 }
 ```
 
-**Note:** Source ID is automatically extracted from the URL path.
+`webhook` フィールドで通知先のDiscord webhookを指定します。未指定の場合は `DISCORD_WEBHOOK_URL` にフォールバックします。
 
-### 3. StateManager (src/state_manager.py)
+### 3. StateManager（src/state_manager.py）
 
-**Responsibilities:**
-- Load state from JSON files
-- Save state to JSON files
-- Create state/ directory if needed
-- Handle missing/corrupt state files
+**役割：**
+- JSONファイルから状態を読み込み
+- JSONファイルに状態を保存
+- `state/` ディレクトリの自動作成
+- 破損・欠損した状態ファイルの処理
 
-**State File Format:**
+**状態ファイルフォーマット：**
 ```json
 {
   "source_id": "agnes-chang",
@@ -168,14 +149,9 @@ def main():
 }
 ```
 
-**Key Features:**
-- Atomic writes (write to temp, rename)
-- Graceful handling of missing files
-- ISO 8601 timestamps
+### 4. Models（src/models.py）
 
-### 4. Models (src/models.py)
-
-**Article:**
+**Article：**
 ```python
 @dataclass
 class Article:
@@ -184,11 +160,11 @@ class Article:
     published_time: Optional[str]
 
     def __eq__(self, other):
-        # Two articles equal if same URL
+        # URLが同じなら同一記事とみなす
         return self.url == other.url
 ```
 
-**SourceState:**
+**SourceState：**
 ```python
 @dataclass
 class SourceState:
@@ -201,284 +177,193 @@ class SourceState:
     last_error: Optional[str]
 ```
 
-### 5. Scrapers (src/scrapers.py)
+### 5. Scrapers（src/scrapers.py）
 
-**NYTReporterScraper:**
+使用するスクレイパーはURLから自動判別されます（`get_scraper()` ファクトリ関数）。
 
-#### Key Features
+| URLパターン | スクレイパー |
+|---|---|
+| `/rss/` 含む・`.rss`/`.xml` 終わり | RSSScraper |
+| `nytimes.com/by/` 含む | NYTReporterScraper |
+| gijn.org / datawrapper.de / reuters.com | GenericHTMLScraper |
 
-1. **Session Management**
-   - Reuses HTTP connections
-   - Maintains cookies
-   - Single session per scraper instance
+新しいサイトを追加する場合は `_GENERIC_HTML_DOMAINS` に追加するか、専用スクレイパークラスを作成します。
 
-2. **Request Headers**
-   ```python
-   User-Agent: NYT-Article-Monitor/1.0 (...)
-   Accept: text/html,application/xhtml+xml,...
-   Accept-Language: en-US,en;q=0.9
-   DNT: 1
-   ```
+**共通機能：**
+- 条件付きリクエスト（ETag / If-Modified-Since）
+- 15秒タイムアウト
+- リクエスト間2秒の遅延
+- リトライなし（次回実行で再試行）
 
-3. **Conditional Requests**
-   ```python
-   If-None-Match: {etag}
-   If-Modified-Since: {last_modified}
-   ```
+**NYTReporterScraper のパース戦略：**
 
-   If page unchanged, server returns 304, saving:
-   - Bandwidth
-   - Server CPU
-   - Parsing time
+| 戦略 | 対象 | 説明 |
+|---|---|---|
+| Strategy 1 | `<ol>` リスト | 年パターン付きリンクを探す（最も信頼性が高い） |
+| Strategy 2 | `<div>`/`<section>`/`<article>` | 見出しタグを持つ記事リンクを探す |
+| Strategy 3 | フォールバック | 任意の年パターンリンクを探す |
 
-4. **Timeout & Delay**
-   - 15-second request timeout
-   - 2-second delay between requests
-   - No retries (fail fast)
+複数戦略を持つ理由：DOMの構造は変わりやすいため、堅牢性を高めるために複数のアプローチを試みます。
 
-#### Parsing Strategies
+### 6. DiscordNotifier（src/notifications.py）
 
-**Strategy 1: Article Lists**
-- Look for `<ol>` tags
-- Find `<a>` with href containing `/20XX/`
-- Extract `<h3>`, `<h2>`, or `<h4>` for title
-- Find `<time datetime="...">` for timestamp
+**webhook ルーティング：**
 
-**Strategy 2: Container Divs**
-- Search `<div>`, `<section>`, `<article>` tags
-- Find article links with year patterns
-- Extract heading tags
-- Look for time elements
+`WEBHOOK_URL_*` プレフィックスの環境変数を自動収集します。各ソースの `sources.json` に記載した `webhook` キーで通知先を指定します。
 
-**Strategy 3: Fallback**
-- Find any link with year pattern
-- Try to extract title from link text
-- Check parent elements for headings
-- No timestamp (set to None)
-
-**Why Multiple Strategies?**
-- DOM structure changes over time
-- Different reporters may have different layouts
-- Increases robustness
-- Fails gracefully
-
-### 6. GitHub Actions Workflow
-
-**Trigger Mechanisms:**
-1. **Schedule**: `cron: '0 * * * *'` (hourly)
-2. **Manual**: workflow_dispatch
-3. **Push**: For testing
-
-**Steps:**
-```yaml
-1. Checkout code
-2. Setup Python 3.11
-3. Install dependencies (cached)
-4. Run check_articles.py
-5. Commit state changes
-6. Push to repository
+```python
+# 環境変数の自動収集
+self._webhooks = {
+    key: value
+    for key, value in os.environ.items()
+    if key.startswith('WEBHOOK_URL_') and value
+}
 ```
 
-**Commit Strategy:**
+| sources.json の webhook 値 | 使用される環境変数 |
+|---|---|
+| `"WEBHOOK_URL_NYT"` | `WEBHOOK_URL_NYT` |
+| `"WEBHOOK_URL_WAPO"` | `WEBHOOK_URL_WAPO` |
+| `"WEBHOOK_URL_BLOG"` | `WEBHOOK_URL_BLOG` |
+| 未指定 | `DISCORD_WEBHOOK_URL`（デフォルト） |
+
+### 7. GitHub Actions ワークフロー
+
+**トリガー：**
+1. **スケジュール**: `cron: '0 * * * *'`（毎時間）
+2. **手動**: workflow_dispatch
+
+**ステップ：**
+```yaml
+1. コードのチェックアウト
+2. Python 3.11 のセットアップ
+3. 依存ライブラリのインストール（キャッシュあり）
+4. check_articles.py の実行
+5. 状態変更のコミット
+6. リポジトリへのプッシュ
+```
+
+**コミット戦略：**
 ```bash
 git add state/
-if changes exist:
+if 変更あり:
     git commit -m "Update article check state [skip ci]"
     git push
 ```
 
-**[skip ci] Tag:**
-- Prevents infinite loop
-- State commits don't trigger new workflows
+`[skip ci]` タグにより、状態コミットが新たなワークフロー実行をトリガーしません（無限ループ防止）。
 
-## Data Flow
+## データフロー
 
-### First Run (Cold Start)
+### 初回実行（コールドスタート）
 
 ```
-1. Load config
+1. 設定の読み込み
    └─> sources.json: [source1, source2]
 
-2. For source1:
-   ├─> Load state
-   │   └─> No file exists → Create empty state
-   ├─> Fetch page (no conditional headers)
+2. source1 の処理:
+   ├─> 状態の読み込み
+   │   └─> ファイルなし → 空の状態を作成
+   ├─> ページ取得（条件付きヘッダーなし）
    │   └─> HTTP 200 OK
-   ├─> Parse HTML
-   │   └─> Extract article A
-   ├─> Compare
-   │   └─> No previous article → Record as baseline
-   └─> Save state
-       └─> Write state/source1.json
+   ├─> HTML パース → 記事 A を取得
+   ├─> 比較
+   │   └─> 前回の記事なし → ベースラインとして記録
+   └─> 状態を保存: state/source1.json
 
-3. For source2:
-   └─> [same process]
+3. 以降のソースも同様に処理
 
-4. Commit & push state files
+4. 状態ファイルをコミット & プッシュ
 ```
 
-### Subsequent Run (Warm State)
+### 2回目以降の実行
 
 ```
-1. Load config
-2. For source1:
-   ├─> Load state
-   │   └─> File exists → Load last_article = A
-   ├─> Fetch page (with etag, last-modified)
-   │   ├─> HTTP 304 → Skip parse
-   │   │   └─> Return None
-   │   └─> HTTP 200 → Parse
-   │       └─> Extract article B
-   ├─> Compare
-   │   ├─> B == A → No change
-   │   └─> B != A → NEW ARTICLE!
-   └─> Save state
-       └─> Update state/source1.json
+1. 設定の読み込み
+2. source1 の処理:
+   ├─> 状態の読み込み: last_article = A
+   ├─> ページ取得（etag / last-modified 付き）
+   │   ├─> HTTP 304 → パースをスキップ
+   │   └─> HTTP 200 → パース → 記事 B を取得
+   ├─> 比較
+   │   ├─> B == A → 変化なし
+   │   └─> B != A → 新記事検出！→ Discord通知
+   └─> 状態を保存: state/source1.json
 
-3. Commit changes (if any)
+3. 変更があればコミット
 ```
 
-## Extension Points
+## 拡張ポイント
 
-### Adding New Scrapers
+### 新しいスクレイパーの追加
 
-1. Create new scraper class:
+1. スクレイパークラスを作成：
 ```python
 class CustomScraper:
     def scrape(self, url, etag, last_modified):
-        # Implement scraping logic
+        # スクレイピングロジックの実装
         return article, etag, last_modified
 ```
 
-2. Register in factory:
+2. ファクトリに登録（`_GENERIC_HTML_DOMAINS` に追加 or 条件を追加）：
 ```python
-def get_scraper(source_type):
-    if source_type == 'custom':
-        return CustomScraper()
+_GENERIC_HTML_DOMAINS = ('gijn.org', 'datawrapper.de', 'reuters.com', 'example.com')
 ```
 
-3. Add source with new type:
+3. `sources.json` にソースを追加：
 ```json
-{"type": "custom", ...}
+{"url": "https://example.com/author/...", "enabled": true, "webhook": "WEBHOOK_URL_XXX"}
 ```
 
-### Adding Notifications
+### 新しい通知先の追加
 
-Hook into `check_articles.py`:
-
-```python
-def check_source(source, state_manager):
-    # ... existing code ...
-
-    if state.last_article != article:
-        # NEW ARTICLE
-        notify(
-            title=f"New article from {source['name']}",
-            body=article.title,
-            url=article.url
-        )
+1. `sources.json` に `webhook` フィールドを指定：
+```json
+{"url": "...", "enabled": true, "webhook": "WEBHOOK_URL_NEW"}
 ```
 
-Notification options:
-- Email (SMTP, SendGrid, SES)
-- Slack webhook
-- Discord webhook
-- GitHub Issues
-- Twitter API
-- RSS feed
+2. GitHub Secrets に `WEBHOOK_URL_NEW` を追加
 
-### Adding Analytics
-
-Track metrics:
-```python
-# In check_source()
-metrics.record({
-    'source_id': source_id,
-    'check_time': time.time(),
-    'status': 'success' | 'error',
-    'article_changed': bool,
-    'http_status': 200 | 304 | 403,
-    'parse_strategy': 1 | 2 | 3
-})
+3. ワークフローの `env:` に追加：
+```yaml
+WEBHOOK_URL_NEW: ${{ secrets.WEBHOOK_URL_NEW }}
 ```
 
-Options:
-- Log to file
-- Send to CloudWatch
-- Push to Prometheus
-- Store in GitHub repo
+Pythonコードの変更は不要です。
 
-## Performance Considerations
+## パフォーマンス
 
-### Time Complexity
+### 所要時間の目安
 
-With N sources and D=2s delay:
-- Best case (all 304): ~2N seconds
-- Worst case (all parse): ~2N + parsing_time
+N ソース・遅延 D=2秒 の場合：
+- 最良（全て304）: 約 2N 秒
+- 最悪（全てパース): 約 2N + パース時間
 
-For 10 sources:
-- Best: ~20 seconds
-- Worst: ~30 seconds
+10ソースの場合：最良 約20秒、最悪 約30秒
 
-### Memory
+### メモリ
 
-- BeautifulSoup parses one page at a time
-- Session reuse saves memory
-- State files kept small (JSON)
-- No caching of HTML content
+- BeautifulSoup は1ページずつ処理
+- セッション再利用でメモリ節約
+- HTMLのキャッシュなし
 
-### Network
+### ネットワーク
 
-- Conditional requests save bandwidth
-- Session connection pooling
-- No article body fetches
-- Respectful delays
+- 条件付きリクエストで帯域幅を節約
+- セッションによるコネクションプール
+- 記事本文の取得なし（見出し・URLのみ）
 
-## Security Considerations
+## セキュリティ
 
-### Input Validation
+### Secretsの管理
 
-- URLs validated by requests library
-- JSON parsing with error handling
-- No code execution from config
+- WebhookのURLは必ずGitHub Secretsで管理
+- コードやコミットに含めない
+- `WEBHOOK_URL_*` パターンの環境変数として設定
 
-### Secrets
+### レート制限への配慮
 
-- No API keys required
-- Uses GitHub's built-in GITHUB_TOKEN
-- State files contain no sensitive data
-
-### Rate Limiting
-
-- Built-in delays
-- No aggressive retries
-- Clear identification (User-Agent)
-- Honors 304 responses
-
-## Future Enhancements
-
-1. **Pluggable Notifications**
-   - Abstract notification interface
-   - Multiple notification backends
-   - Per-source notification config
-
-2. **Better DOM Resilience**
-   - Machine learning for pattern detection
-   - CSS selector learning
-   - Automatic strategy updates
-
-3. **Multi-site Support**
-   - Washington Post
-   - Guardian
-   - Reuters
-   - Configurable parsers
-
-4. **Advanced State**
-   - Article history (last N articles)
-   - Detection of article updates
-   - Author information
-
-5. **Dashboard**
-   - Web interface for viewing state
-   - Real-time notifications
-   - Historical graphs
+- リクエスト間に2秒の遅延
+- アグレッシブなリトライなし
+- User-Agentで明確にbot識別
+- 304レスポンスを尊重

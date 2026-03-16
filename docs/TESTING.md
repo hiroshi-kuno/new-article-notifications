@@ -1,28 +1,28 @@
-# Testing Guide
+# テストガイド
 
-This document explains how to test the New Article Notification system locally before deploying to GitHub Actions.
+GitHub Actionsにデプロイする前にローカルでテストする方法を説明します。
 
-## Prerequisites
+## 事前準備
 
 ```bash
-# Python 3.11 or higher
+# Python 3.11以上
 python3 --version
 
-# Install dependencies
+# 依存ライブラリのインストール
 pip install -r requirements.txt
 ```
 
-## Local Testing
+## ローカルテスト
 
-### 1. Basic Functionality Test
+### 1. 基本動作テスト
 
-Run the checker once:
+チェッカーを一度実行します：
 
 ```bash
 python check_articles.py
 ```
 
-Expected output:
+正常な出力例：
 ```
 ############################################################
 # New Article Notification Checker
@@ -38,7 +38,7 @@ URL: https://www.nytimes.com/by/agnes-chang
 Fetching page...
 
 Top article found:
-  Title: [Article title]
+  Title: [記事タイトル]
   URL: https://www.nytimes.com/...
   Published: 2025-01-28T...
 
@@ -57,67 +57,49 @@ Failed: 0
 Completed: 2025-01-28T15:30:05.000000Z
 ```
 
-### 2. Verify State Creation
-
-Check that state file was created:
+### 2. 状態ファイルの確認
 
 ```bash
 ls -la state/
 cat state/agnes-chang.json
 ```
 
-The file should contain:
+以下の内容が含まれているか確認：
 - `source_id`
-- `last_article` (with title, URL, published_time)
-- `last_checked` timestamp
-- `etag` and `last_modified` (if provided by server)
+- `last_article`（title・URL・published_time）
+- `last_checked` タイムスタンプ
+- `etag` と `last_modified`（サーバーが返す場合）
 
-### 3. Test Change Detection
+### 3. 変化検知のテスト
 
-Run again immediately:
+もう一度実行します：
 
 ```bash
 python check_articles.py
 ```
 
-You should see:
+以下のどちらかが表示されるはずです：
 ```
   Page not modified (304), skipping parse
 ```
-
-Or:
+または：
 ```
   No change (same article as before)
 ```
 
-### 4. Test Multiple Sources
+### 4. 複数ソースのテスト
 
-Add another source to `config/sources.json`:
-
-```json
-{
-  "sources": [
-    {
-      "url": "https://www.nytimes.com/by/agnes-chang",
-      "enabled": true
-    },
-    {
-      "url": "https://www.nytimes.com/by/some-other-reporter",
-      "enabled": true
-    }
-  ]
-}
-```
-
-Run and verify both sources are checked:
+`config/sources.json` にソースを追加して実行：
 
 ```bash
 python check_articles.py
 ```
 
-### 5. Test Error Handling
+すべてのソースがチェックされることを確認します。
 
-Add an invalid URL:
+### 5. エラーハンドリングのテスト
+
+存在しないURLを追加して実行：
 
 ```json
 {
@@ -126,21 +108,21 @@ Add an invalid URL:
 }
 ```
 
-Run and verify:
-- Error is logged
-- Other sources still process
-- Script doesn't crash
+確認事項：
+- エラーがログに記録される
+- 他のソースは正常に処理される
+- スクリプトがクラッシュしない
 
 ```bash
 python check_articles.py
-echo "Exit code: $?"
+echo "終了コード: $?"
 ```
 
-Exit code should be 0 (unless all sources failed).
+終了コードは 0 のはずです（全ソースが失敗した場合を除く）。
 
-### 6. Test Disabled Source
+### 6. 無効化ソースのテスト
 
-Disable a source:
+ソースを無効化：
 
 ```json
 {
@@ -149,57 +131,73 @@ Disable a source:
 }
 ```
 
-Verify it's not checked:
+そのソースがチェックされないことを確認します。
+
+## 各コンポーネントのテスト
+
+### テストスクリプト（tests/ ディレクトリ）
 
 ```bash
-python check_articles.py
+# NYTスクレイパーのテスト
+python tests/test_nyt.py
+
+# 通知ロジックのテスト
+python tests/test_notification_logic.py
+
+# 複数サイトのテスト（GIJN, Datawrapper）
+python tests/test_new_sites.py
+
+# 各サイト種別の代表ソースをテスト
+python tests/test_representative.py
+
+# Discordデフォルトwebhookのテスト（DISCORD_WEBHOOK_URLが必要）
+export DISCORD_WEBHOOK_URL="https://discord.com/api/webhooks/..."
+python tests/test_slack.py
+
+# NYT専用webhookのテスト（WEBHOOK_URL_NYTが必要）
+export WEBHOOK_URL_NYT="https://discord.com/api/webhooks/..."
+python tests/test_nyt_webhook.py
 ```
 
-## Testing Specific Components
-
-### Test Configuration Loading
+### 設定読み込みのテスト
 
 ```python
 from src.config import Config
 
 config = Config()
 sources = config.get_enabled_sources()
-print(f"Enabled sources: {len(sources)}")
+print(f"有効なソース数: {len(sources)}")
 for source in sources:
     source_id = Config.extract_source_id(source['url'])
-    print(f"  - {source_id}: {source['url']}")
+    webhook = source.get('webhook', 'デフォルト')
+    print(f"  - {source_id}: webhook={webhook}")
 ```
 
-### Test State Management
+### 状態管理のテスト
 
 ```python
 from src.state_manager import StateManager
-from src.models import Article, SourceState
+from src.models import Article
 
-# Create state manager
 sm = StateManager()
 
-# Load (or create new) state
 state = sm.load_state("test-id")
-print(f"State: {state.source_id}")
+print(f"状態: {state.source_id}")
 
-# Create article
 article = Article(
-    title="Test Article",
+    title="テスト記事",
     url="https://example.com/test",
     published_time="2025-01-28T10:00:00Z"
 )
 
-# Update and save state
 state.last_article = article
 sm.save_state(state)
 
-# Reload and verify
 state2 = sm.load_state("test-id")
-print(f"Loaded article: {state2.last_article.title}")
+print(f"読み込んだ記事: {state2.last_article.title}")
 ```
 
-### Test Scraper
+### スクレイパーのテスト
 
 ```python
 from src.scrapers import NYTReporterScraper
@@ -210,92 +208,83 @@ url = "https://www.nytimes.com/by/agnes-chang"
 try:
     article, etag, last_modified = scraper.scrape(url)
     if article:
-        print(f"Title: {article.title}")
+        print(f"タイトル: {article.title}")
         print(f"URL: {article.url}")
-        print(f"Published: {article.published_time}")
+        print(f"公開日時: {article.published_time}")
         print(f"ETag: {etag}")
-        print(f"Last-Modified: {last_modified}")
     else:
-        print("No article found or page not modified")
+        print("記事が見つからないか、ページが更新されていません")
 except Exception as e:
-    print(f"Error: {e}")
+    print(f"エラー: {e}")
 ```
 
-## Manual DOM Inspection
+## HTMLの手動デバッグ
 
-If scraping fails, inspect the HTML manually:
+スクレイピングが失敗する場合、HTMLを手動で確認します：
 
 ```python
 import requests
 from bs4 import BeautifulSoup
 
 url = "https://www.nytimes.com/by/agnes-chang"
-headers = {
-    'User-Agent': 'Mozilla/5.0 (compatible; TestBot/1.0)'
-}
+headers = {'User-Agent': 'Mozilla/5.0 (compatible; TestBot/1.0)'}
 
 response = requests.get(url, headers=headers, timeout=15)
 soup = BeautifulSoup(response.text, 'html.parser')
 
-# Save HTML for inspection
+# デバッグ用にHTMLを保存
 with open('debug.html', 'w', encoding='utf-8') as f:
     f.write(soup.prettify())
 
-print("HTML saved to debug.html")
+print("debug.html に保存しました")
 
-# Try finding article elements
-print("\nLooking for <ol> tags:")
+# <ol>タグの確認
+print("\n<ol> タグ:")
 for ol in soup.find_all('ol')[:3]:
-    print(f"  Found: {ol.get('class')}")
+    print(f"  class={ol.get('class')}")
 
-print("\nLooking for article links:")
+# 記事リンクの確認
+print("\n記事リンク候補:")
 links = soup.find_all('a', href=lambda x: x and '/2025/' in x)
 for link in links[:5]:
     print(f"  {link.get('href')}")
     title = link.find(['h1', 'h2', 'h3'])
     if title:
-        print(f"    Title: {title.get_text(strip=True)[:50]}...")
+        print(f"    タイトル: {title.get_text(strip=True)[:50]}...")
 ```
 
-## GitHub Actions Testing
+## GitHub Actionsのテスト
 
-### 1. Test Workflow Syntax
+### 1. ワークフロー構文のチェック
 
 ```bash
-# Install actionlint (workflow linter)
-# macOS: brew install actionlint
-# Linux: Download from https://github.com/rhysd/actionlint
+# actionlintのインストール（macOS）
+brew install actionlint
 
+# 構文チェック
 actionlint .github/workflows/check-articles.yml
 ```
 
-### 2. Test Locally with Act
+### 2. actでローカル実行
 
 ```bash
-# Install act (run GitHub Actions locally)
-# macOS: brew install act
-# Linux: https://github.com/nektos/act
+# actのインストール（macOS）
+brew install act
 
-# Run the workflow
+# ワークフロー実行
 act workflow_dispatch
-
-# Or test the scheduled run
-act schedule
 ```
 
-### 3. Enable GitHub Actions
+### 3. GitHubで手動実行
 
-1. Push code to GitHub
-2. Go to repository → Settings → Actions → General
-3. Ensure "Allow all actions" is enabled
-4. Go to Actions tab
-5. Click "Check for New Articles"
-6. Click "Run workflow"
-7. Monitor the run
+1. コードをGitHubにプッシュ
+2. Actions タブ → **Check for New Articles**
+3. **Run workflow** をクリック
+4. 実行ログを確認
 
-### 4. Verify State Persistence
+### 4. 状態の永続化を確認
 
-After the first run:
+初回実行後：
 
 ```bash
 git pull
@@ -303,72 +292,49 @@ ls state/
 cat state/*.json
 ```
 
-Verify:
-- State files exist
-- Contain expected data
-- Committed by github-actions[bot]
+確認事項：
+- 状態ファイルが存在する
+- 正しいデータが含まれている
+- `github-actions[bot]` によってコミットされている
 
-## Troubleshooting Tests
+## トラブルシューティング
 
-### ImportError or ModuleNotFoundError
+### ImportError / ModuleNotFoundError
 
 ```bash
-# Ensure you're in the project root
+# プロジェクトルートにいるか確認
 pwd
 
-# Verify Python can find src/
+# sys.path を確認
 python -c "import sys; print(sys.path)"
 
-# Try running with explicit path
+# 明示的にパスを指定して実行
 PYTHONPATH=. python check_articles.py
 ```
 
 ### HTTP 403 Forbidden
 
-NYT might be blocking your IP. Try:
+NYTのIPブロックの可能性があります：
+1. 数分待ってから再実行
+2. VPNを使用
+3. リクエスト頻度が高すぎないか確認
 
-1. Wait a few minutes
-2. Use a VPN
-3. Check if you're making too many requests
+### 記事が検出されない
 
-### No Articles Found
+DOMの構造が変わった可能性があります。上記のHTML手動デバッグを実行し、`src/scrapers.py` のパース戦略を更新してください。
 
-The DOM structure may have changed. Run manual inspection (see above) and update parsing strategies in `src/scrapers.py`.
+### GitHub ActionsでStateがコミットされない
 
-### State Not Committing in GitHub Actions
+1. Settings → Actions → General → **Workflow permissions** を確認
+2. **Read and write permissions** に設定
+3. ワークフローに `permissions: contents: write` があるか確認
 
-Check:
-1. Repository permissions (Settings → Actions → General → Workflow permissions)
-2. Set to "Read and write permissions"
-3. Workflow has `permissions: contents: write`
+## パフォーマンステスト
 
-## Performance Testing
-
-Test with multiple sources:
+複数ソースで実行時間を計測：
 
 ```bash
-# Add 5-10 sources to config
 time python check_articles.py
 ```
 
-With 10 sources and 2-second delay, expect ~20-30 seconds total.
-
-## Continuous Testing
-
-Set up a simple loop for continuous monitoring:
-
-```bash
-# Check every 5 minutes for 1 hour
-for i in {1..12}; do
-  echo "=== Run $i ==="
-  python check_articles.py
-  echo "Sleeping 5 minutes..."
-  sleep 300
-done
-```
-
-Monitor:
-- State file changes
-- Error patterns
-- 304 responses (good! saves bandwidth)
-- Detection accuracy
+10ソースで2秒の遅延を設定している場合、目安は20〜30秒です。

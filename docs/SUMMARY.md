@@ -42,13 +42,16 @@ NYT（New York Times）の記者ページを監視し、新しい記事が公開
 
 ```
 new-article-notifications/
-├── config/sources.json          # ← ここを編集して記者を追加
+├── config/sources.json          # ← ここを編集してソースを追加・webhook設定
 ├── state/*.json                 # 自動生成される状態ファイル
 ├── src/                         # Pythonソースコード
 │   ├── config.py               # 設定読み込み
 │   ├── models.py               # データモデル
+│   ├── notifications.py        # Discord通知
 │   ├── scrapers.py             # スクレイピングロジック
 │   └── state_manager.py        # 状態管理
+├── docs/                        # ドキュメント
+├── tests/                       # テストスクリプト
 ├── check_articles.py            # メインスクリプト
 └── .github/workflows/           # GitHub Actions設定
     └── check-articles.yml
