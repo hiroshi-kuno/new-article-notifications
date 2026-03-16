@@ -357,7 +357,8 @@
     },
     {
       "url": "https://gijn.org/topic/data-journalism-top-10/",
-      "enabled": true
+      "enabled": true,
+      "webhook": "WEBHOOK_URL_BLOG"
     },
     {
       "url": "https://www.datawrapper.de/blog/category/data-vis-dispatch",
