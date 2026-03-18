@@ -5,9 +5,9 @@
     "url": "https://www.washingtonpost.com/technology/interactive/2026/jobs-most-affected-ai-automation/",
     "published_time": "2026-03-16T09:00:00Z"
   },
-  "last_checked": "2026-03-18T01:09:35.836958Z",
+  "last_checked": "2026-03-18T03:48:27.514228Z",
   "etag": null,
   "last_modified": null,
-  "error_count": 0,
-  "last_error": null
+  "error_count": 1,
+  "last_error": "Request timeout after 15s"
 }
