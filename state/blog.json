@@ -5,9 +5,9 @@
     "url": "https://www.anychart.com/blog/2026/03/13/new-charts-maps-work/",
     "published_time": null
   },
-  "last_checked": "2026-03-20T10:39:22.666925Z",
+  "last_checked": "2026-03-20T11:35:06.812351Z",
   "etag": null,
   "last_modified": null,
-  "error_count": 1,
-  "last_error": "Request failed: HTTPSConnectionPool(host='www.anychart.com', port=443): Max retries exceeded with url: /blog/ (Caused by NameResolutionError(\"HTTPSConnection(host='www.anychart.com', port=443): Failed to resolve 'www.anychart.com' ([Errno -3] Temporary failure in name resolution)\"))"
+  "error_count": 0,
+  "last_error": null
 }
