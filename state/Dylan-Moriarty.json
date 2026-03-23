@@ -5,9 +5,9 @@
     "url": "https://www.washingtonpost.com/nation/2026/03/22/iran-war-gas-price-surge/",
     "published_time": "2026-03-22T09:00:50Z"
   },
-  "last_checked": "2026-03-23T10:44:44.207657Z",
+  "last_checked": "2026-03-23T11:38:29.089831Z",
   "etag": null,
   "last_modified": null,
-  "error_count": 0,
-  "last_error": null
+  "error_count": 1,
+  "last_error": "Request timeout after 15s"
 }
