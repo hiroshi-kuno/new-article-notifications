@@ -5,9 +5,9 @@
     "url": "https://www.washingtonpost.com/transportation/2026/03/23/us-airport-laguardia-air-canada-plane/",
     "published_time": "2026-03-23T15:41:21Z"
   },
-  "last_checked": "2026-03-24T06:53:34.245689Z",
+  "last_checked": "2026-03-24T07:49:59.243292Z",
   "etag": null,
   "last_modified": null,
-  "error_count": 0,
-  "last_error": null
+  "error_count": 1,
+  "last_error": "Request timeout after 15s"
 }
