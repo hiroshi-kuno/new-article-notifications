@@ -388,6 +388,10 @@
       "url": "https://www.ft.com/climate-graphic-of-the-week",
       "enabled": true,
       "webhook": "WEBHOOK_URL_FT"
+    },
+    {
+      "url": "https://www.aljazeera.com/interactives/",
+      "enabled": true
     }
   ]
 }
