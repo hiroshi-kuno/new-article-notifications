@@ -373,6 +373,21 @@
     {
       "url": "https://www.reuters.com/graphics/",
       "enabled": true
+    },
+    {
+      "url": "https://www.ft.com/visual-stories",
+      "enabled": true,
+      "webhook": "WEBHOOK_URL_FT"
+    },
+    {
+      "url": "https://www.ft.com/visual-investigations",
+      "enabled": true,
+      "webhook": "WEBHOOK_URL_FT"
+    },
+    {
+      "url": "https://www.ft.com/climate-graphic-of-the-week",
+      "enabled": true,
+      "webhook": "WEBHOOK_URL_FT"
     }
   ]
 }

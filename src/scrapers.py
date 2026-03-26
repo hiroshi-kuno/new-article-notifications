@@ -611,7 +611,7 @@ class GenericHTMLScraper:
 
 
 # Domains handled by the generic HTML scraper
-_GENERIC_HTML_DOMAINS = ('gijn.org', 'datawrapper.de', 'reuters.com', 'anychart.com')
+_GENERIC_HTML_DOMAINS = ('gijn.org', 'datawrapper.de', 'reuters.com', 'anychart.com', 'ft.com')
 
 
 def get_scraper(url: str):
