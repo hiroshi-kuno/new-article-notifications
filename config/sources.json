@@ -392,6 +392,10 @@
     {
       "url": "https://www.aljazeera.com/interactives/",
       "enabled": true
+    },
+    {
+      "url": "https://pudding.cool/",
+      "enabled": true
     }
   ]
 }
