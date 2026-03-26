@@ -396,6 +396,10 @@
     {
       "url": "https://pudding.cool/",
       "enabled": true
+    },
+    {
+      "url": "https://www.straitstimes.com/visual",
+      "enabled": true
     }
   ]
 }
