@@ -400,6 +400,10 @@
     {
       "url": "https://www.straitstimes.com/visual",
       "enabled": true
+    },
+    {
+      "url": "https://www.asahi.com/special/",
+      "enabled": true
     }
   ]
 }

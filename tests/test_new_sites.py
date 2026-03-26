@@ -46,10 +46,22 @@ def main():
     print("Testing New Sites")
     print("="*60)
 
-    sites = [
-        "https://gijn.org/topic/data-journalism-top-10/",
-        "https://www.datawrapper.de/blog/category/data-vis-dispatch"
-    ]
+    # コマンドライン引数があればそれを使用、なければデフォルトリスト
+    if len(sys.argv) > 1:
+        sites = sys.argv[1:]
+    else:
+        sites = [
+            "https://gijn.org/topic/data-journalism-top-10/",
+            "https://www.datawrapper.de/blog/category/data-vis-dispatch",
+            "https://www.anychart.com/blog/",
+            "https://www.ft.com/visual-stories",
+            "https://www.ft.com/visual-investigations",
+            "https://www.ft.com/climate-graphic-of-the-week",
+            "https://www.aljazeera.com/interactives/",
+            "https://pudding.cool/",
+            "https://www.straitstimes.com/visual",
+            "https://www.reuters.com/graphics/",
+        ]
 
     results = []
     for site in sites:

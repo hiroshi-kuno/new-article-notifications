@@ -86,6 +86,7 @@ class NYTReporterScraper:
             new_etag = response.headers.get('ETag')
             new_last_modified = response.headers.get('Last-Modified')
 
+            response.encoding = response.apparent_encoding
             return response.text, new_etag, new_last_modified
 
         except requests.Timeout:
@@ -316,6 +317,7 @@ class RSSScraper:
             new_etag = response.headers.get('ETag')
             new_last_modified = response.headers.get('Last-Modified')
 
+            response.encoding = response.apparent_encoding
             return response.text, new_etag, new_last_modified
 
         except requests.Timeout:
@@ -481,6 +483,7 @@ class GenericHTMLScraper:
             new_etag = response.headers.get('ETag')
             new_last_modified = response.headers.get('Last-Modified')
 
+            response.encoding = response.apparent_encoding
             return response.text, new_etag, new_last_modified
 
         except requests.Timeout:
@@ -573,6 +576,21 @@ class GenericHTMLScraper:
                         published_time=None
                     )
 
+        # Strategy 4: <a> wrapping a heading (pudding.cool, straitstimes.com style)
+        skip_patterns = ['#', 'mailto:', 'javascript:', 'facebook.com', 'twitter.com', 'linkedin.com']
+        for a in soup.find_all('a', href=True):
+            href = a.get('href', '')
+            if any(skip in href.lower() for skip in skip_patterns):
+                continue
+            heading = a.find(['h1', 'h2', 'h3', 'h4'])
+            if heading:
+                title = heading.get_text(strip=True)
+                if len(title) > 10:
+                    url = urljoin(base_url, href)
+                    time_elem = a.find('time') or a.parent.find('time') if a.parent else None
+                    pub_time = time_elem.get('datetime') if time_elem else None
+                    return Article(title=title, url=url, published_time=pub_time)
+
         return None
 
     def scrape(
@@ -610,8 +628,66 @@ class GenericHTMLScraper:
         return article, new_etag, new_last_modified
 
 
+class ReutersScraper(GenericHTMLScraper):
+    """Scraper for Reuters section pages (e.g. /graphics/)."""
+
+    def parse_top_article(self, html: str, base_url: str) -> Optional[Article]:
+        """Parse the top article from a Reuters section page.
+
+        Reuters article URLs end with a date pattern: /slug-YYYY-MM-DD/
+        """
+        import re
+        from urllib.parse import urljoin
+
+        soup = BeautifulSoup(html, 'html.parser')
+
+        # Strategy 1: links ending with date pattern (Reuters article URL format)
+        date_pattern = re.compile(r'\d{4}-\d{2}-\d{2}/?$')
+        for a in soup.find_all('a', href=True):
+            href = a['href']
+            if not date_pattern.search(href):
+                continue
+            title = a.get_text(strip=True)
+            if len(title) > 10:
+                url = urljoin('https://www.reuters.com', href)
+                return Article(title=title, url=url, published_time=None)
+
+        # Strategy 2: fallback to generic
+        return super().parse_top_article(html, base_url)
+
+
+class FTScraper(GenericHTMLScraper):
+    """Scraper for Financial Times section pages."""
+
+    def parse_top_article(self, html: str, base_url: str) -> Optional[Article]:
+        """Parse the top article from an FT section page.
+
+        FT uses o-teaser__heading > js-teaser-heading-link for the featured article.
+        """
+        soup = BeautifulSoup(html, 'html.parser')
+        from urllib.parse import urljoin
+
+        # Strategy 1: o-teaser__heading (FT's featured article structure)
+        heading_div = soup.find('div', class_='o-teaser__heading')
+        if heading_div:
+            link = heading_div.find('a', href=lambda x: x and '/content/' in str(x))
+            if link:
+                href = link.get('href', '')
+                title = link.get_text(strip=True)
+                if title and len(title) > 5:
+                    url = urljoin('https://www.ft.com', href)
+                    # Look for timestamp in parent teaser
+                    teaser = heading_div.find_parent(class_=lambda x: x and 'o-teaser' in ' '.join(x))
+                    time_elem = teaser.find('time') if teaser else None
+                    pub_time = time_elem.get('datetime') if time_elem else None
+                    return Article(title=title, url=url, published_time=pub_time)
+
+        # Strategy 2: fallback to generic
+        return super().parse_top_article(html, base_url)
+
+
 # Domains handled by the generic HTML scraper
-_GENERIC_HTML_DOMAINS = ('gijn.org', 'datawrapper.de', 'reuters.com', 'anychart.com', 'ft.com', 'aljazeera.com', 'pudding.cool', 'straitstimes.com')
+_GENERIC_HTML_DOMAINS = ('gijn.org', 'datawrapper.de', 'anychart.com', 'aljazeera.com', 'pudding.cool', 'straitstimes.com', 'asahi.com')
 
 
 def get_scraper(url: str):
@@ -630,6 +706,10 @@ def get_scraper(url: str):
         return RSSScraper()
     if 'nytimes.com/by/' in url:
         return NYTReporterScraper()
+    if 'ft.com/' in url:
+        return FTScraper()
+    if 'reuters.com/' in url:
+        return ReutersScraper()
     if any(domain in url for domain in _GENERIC_HTML_DOMAINS):
         return GenericHTMLScraper()
     raise ValueError(f"No scraper available for URL: {url}")
