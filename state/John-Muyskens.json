@@ -5,9 +5,9 @@
     "url": "https://www.washingtonpost.com/immigration/2026/03/21/border-wall-expansion-trump-environmental-impact/",
     "published_time": "2026-03-21T09:00:17Z"
   },
-  "last_checked": "2026-03-27T19:40:21.494806Z",
+  "last_checked": "2026-03-27T20:29:34.814812Z",
   "etag": null,
   "last_modified": null,
-  "error_count": 0,
-  "last_error": null
+  "error_count": 1,
+  "last_error": "Request timeout after 15s"
 }
