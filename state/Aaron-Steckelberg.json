@@ -5,9 +5,9 @@
     "url": "https://www.washingtonpost.com/health/2026/03/27/glp1-ozempic-benefits/",
     "published_time": "2026-03-27T09:00:52Z"
   },
-  "last_checked": "2026-03-30T15:58:23.411817Z",
+  "last_checked": "2026-03-30T16:48:56.538882Z",
   "etag": null,
   "last_modified": null,
-  "error_count": 5,
-  "last_error": "HTTP 404"
+  "error_count": 6,
+  "last_error": "Request timeout after 15s"
 }
