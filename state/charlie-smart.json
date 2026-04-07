@@ -5,9 +5,9 @@
     "url": "https://www.nytimes.com/interactive/2025/12/22/us/politics/trump-donors-fundraising-benefits.html",
     "published_time": null
   },
-  "last_checked": "2026-04-07T21:32:21.003006Z",
+  "last_checked": "2026-04-07T22:24:48.659133Z",
   "etag": null,
   "last_modified": "Tue, 07 Apr 2026 21:32:18 GMT",
-  "error_count": 0,
-  "last_error": null
+  "error_count": 1,
+  "last_error": "HTTP 500"
 }
