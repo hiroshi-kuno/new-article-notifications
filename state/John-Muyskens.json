@@ -5,9 +5,9 @@
     "url": "https://www.washingtonpost.com/weather/interactive/2026/spring-flowers-blooming-leaves-out-record-warmth/",
     "published_time": "2026-04-02T09:00:58Z"
   },
-  "last_checked": "2026-04-10T10:52:15.073609Z",
+  "last_checked": "2026-04-10T11:45:18.911130Z",
   "etag": null,
   "last_modified": null,
-  "error_count": 16,
-  "last_error": "Request timeout after 15s"
+  "error_count": 17,
+  "last_error": "HTTP 404"
 }
