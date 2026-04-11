@@ -5,9 +5,9 @@
     "url": "https://www.washingtonpost.com/dc-md-va/2026/03/28/speed-cameras-dc-scofflaws/",
     "published_time": "2026-03-28T09:00:00Z"
   },
-  "last_checked": "2026-04-11T18:27:53.395525Z",
+  "last_checked": "2026-04-11T19:31:02.931212Z",
   "etag": null,
   "last_modified": null,
-  "error_count": 0,
-  "last_error": null
+  "error_count": 1,
+  "last_error": "Request timeout after 15s"
 }
