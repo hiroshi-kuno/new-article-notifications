@@ -5,9 +5,9 @@
     "url": "https://www.washingtonpost.com/investigations/2026/04/17/iran-ships-blockade-straitofhormuz/",
     "published_time": "2026-04-17T16:57:52Z"
   },
-  "last_checked": "2026-04-19T22:27:09.442265Z",
+  "last_checked": "2026-04-19T23:30:36.689089Z",
   "etag": null,
   "last_modified": null,
-  "error_count": 0,
-  "last_error": null
+  "error_count": 1,
+  "last_error": "Request timeout after 15s"
 }
