@@ -5,9 +5,9 @@
     "url": "https://www.washingtonpost.com/investigations/2026/04/20/israel-beirut-lebanon-strikes/",
     "published_time": "2026-04-20T13:43:53Z"
   },
-  "last_checked": "2026-04-20T21:41:20.387266Z",
+  "last_checked": "2026-04-20T22:37:34.299749Z",
   "etag": null,
   "last_modified": null,
-  "error_count": 0,
-  "last_error": null
+  "error_count": 1,
+  "last_error": "Request timeout after 15s"
 }
