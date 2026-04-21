@@ -686,6 +686,18 @@ class FTScraper(GenericHTMLScraper):
         return super().parse_top_article(html, base_url)
 
 
+class LATimesPeopleScraper(RSSScraper):
+    """Scraper for LA Times author pages using their RSS feed."""
+
+    def scrape(
+        self,
+        url: str,
+        etag: Optional[str] = None,
+        last_modified: Optional[str] = None
+    ) -> tuple[Optional[Article], Optional[str], Optional[str]]:
+        return super().scrape(url + '.rss', etag, last_modified)
+
+
 # Domains handled by the generic HTML scraper
 _GENERIC_HTML_DOMAINS = ('gijn.org', 'datawrapper.de', 'anychart.com', 'aljazeera.com', 'pudding.cool', 'straitstimes.com', 'asahi.com')
 
@@ -708,6 +720,8 @@ def get_scraper(url: str):
         return NYTReporterScraper()
     if 'ft.com/' in url:
         return FTScraper()
+    if 'latimes.com/people/' in url:
+        return LATimesPeopleScraper()
     if 'reuters.com/' in url:
         return ReutersScraper()
     if any(domain in url for domain in _GENERIC_HTML_DOMAINS):

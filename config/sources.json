@@ -390,6 +390,126 @@
       "webhook": "WEBHOOK_URL_FT"
     },
     {
+      "url": "https://www.ft.com/aditi-bhandari",
+      "enabled": true,
+      "webhook": "WEBHOOK_URL_FT"
+    },
+    {
+      "url": "https://www.ft.com/alan-smith",
+      "enabled": true,
+      "webhook": "WEBHOOK_URL_FT"
+    },
+    {
+      "url": "https://www.ft.com/alexandra-heal",
+      "enabled": true,
+      "webhook": "WEBHOOK_URL_FT"
+    },
+    {
+      "url": "https://www.ft.com/alison-killing",
+      "enabled": true,
+      "webhook": "WEBHOOK_URL_FT"
+    },
+    {
+      "url": "https://www.ft.com/andy-lin",
+      "enabled": true,
+      "webhook": "WEBHOOK_URL_FT"
+    },
+    {
+      "url": "https://www.ft.com/bob-haslett",
+      "enabled": true,
+      "webhook": "WEBHOOK_URL_FT"
+    },
+    {
+      "url": "https://www.ft.com/caroline-nevitt",
+      "enabled": true,
+      "webhook": "WEBHOOK_URL_FT"
+    },
+    {
+      "url": "https://www.ft.com/chris-campbell",
+      "enabled": true,
+      "webhook": "WEBHOOK_URL_FT"
+    },
+    {
+      "url": "https://www.ft.com/dan-clark",
+      "enabled": true,
+      "webhook": "WEBHOOK_URL_FT"
+    },
+    {
+      "url": "https://www.ft.com/ella-hollowood",
+      "enabled": true,
+      "webhook": "WEBHOOK_URL_FT"
+    },
+    {
+      "url": "https://www.ft.com/emma-lewis",
+      "enabled": true,
+      "webhook": "WEBHOOK_URL_FT"
+    },
+    {
+      "url": "https://www.ft.com/eva-xiao",
+      "enabled": true,
+      "webhook": "WEBHOOK_URL_FT"
+    },
+    {
+      "url": "https://www.ft.com/irene-de-la-torre-arenas",
+      "enabled": true,
+      "webhook": "WEBHOOK_URL_FT"
+    },
+    {
+      "url": "https://www.ft.com/jana-tauschinski",
+      "enabled": true,
+      "webhook": "WEBHOOK_URL_FT"
+    },
+    {
+      "url": "https://www.ft.com/john-burn-murdoch",
+      "enabled": true,
+      "webhook": "WEBHOOK_URL_FT"
+    },
+    {
+      "url": "https://www.ft.com/lucy-rodgers",
+      "enabled": true,
+      "webhook": "WEBHOOK_URL_FT"
+    },
+    {
+      "url": "https://www.ft.com/martin-stabe",
+      "enabled": true,
+      "webhook": "WEBHOOK_URL_FT"
+    },
+    {
+      "url": "https://www.ft.com/oliver-hawkins",
+      "enabled": true,
+      "webhook": "WEBHOOK_URL_FT"
+    },
+    {
+      "url": "https://www.ft.com/oliver-roeder",
+      "enabled": true,
+      "webhook": "WEBHOOK_URL_FT"
+    },
+    {
+      "url": "https://www.ft.com/peter-andringa",
+      "enabled": true,
+      "webhook": "WEBHOOK_URL_FT"
+    },
+    {
+      "url": "https://www.ft.com/sam-joiner",
+      "enabled": true,
+      "webhook": "WEBHOOK_URL_FT"
+    },
+    {
+      "url": "https://www.ft.com/sam-learner",
+      "enabled": true,
+      "webhook": "WEBHOOK_URL_FT"
+    },
+    {
+      "url": "https://www.ft.com/steven-bernard",
+      "enabled": true,
+      "webhook": "WEBHOOK_URL_FT"
+    },
+    {
+      "url": "https://www.ft.com/aendra-rininsland",
+      "enabled": true,
+      "webhook": "WEBHOOK_URL_FT"
+    },
+    {
       "url": "https://www.aljazeera.com/interactives/",
       "enabled": true
     },
