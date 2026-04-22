@@ -5,9 +5,9 @@
     "url": "https://www.washingtonpost.com/dc-md-va/2026/04/11/mount-zion-black-cemetery-georgetown/",
     "published_time": "2026-04-11T12:35:09Z"
   },
-  "last_checked": "2026-04-22T01:23:52.669723Z",
+  "last_checked": "2026-04-22T04:47:14.140697Z",
   "etag": null,
   "last_modified": null,
-  "error_count": 0,
-  "last_error": null
+  "error_count": 1,
+  "last_error": "Request timeout after 15s"
 }
