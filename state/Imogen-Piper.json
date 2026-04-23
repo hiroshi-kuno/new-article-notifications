@@ -5,9 +5,9 @@
     "url": "https://www.washingtonpost.com/national-security/2026/04/21/iran-ship-seizure-blockade/",
     "published_time": "2026-04-21T20:52:44Z"
   },
-  "last_checked": "2026-04-22T23:42:00.002697Z",
+  "last_checked": "2026-04-23T01:22:02.659503Z",
   "etag": null,
   "last_modified": null,
-  "error_count": 0,
-  "last_error": null
+  "error_count": 1,
+  "last_error": "Request timeout after 15s"
 }
