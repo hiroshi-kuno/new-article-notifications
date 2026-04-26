@@ -5,9 +5,9 @@
     "url": "https://www.washingtonpost.com/world/interactive/2026/hormuz-strait-control-blockade/",
     "published_time": "2026-04-14T10:00:28Z"
   },
-  "last_checked": "2026-04-26T21:29:38.671228Z",
+  "last_checked": "2026-04-26T22:27:41.790117Z",
   "etag": null,
   "last_modified": null,
-  "error_count": 0,
-  "last_error": null
+  "error_count": 1,
+  "last_error": "Request timeout after 15s"
 }
