@@ -5,9 +5,9 @@
     "url": "https://www.washingtonpost.com/national-security/2026/04/23/us-majestic-intercepted-iran/",
     "published_time": "2026-04-23T13:43:54Z"
   },
-  "last_checked": "2026-04-25T23:32:10.823540Z",
+  "last_checked": "2026-04-26T01:23:01.856361Z",
   "etag": null,
   "last_modified": null,
-  "error_count": 0,
-  "last_error": null
+  "error_count": 1,
+  "last_error": "Request timeout after 15s"
 }
