@@ -1,9 +1,13 @@
 {
   "source_id": "eva-xiao",
-  "last_article": null,
-  "last_checked": "2026-04-29T05:15:31.652264Z",
+  "last_article": {
+    "title": "How Jay Powell repelled Donald Trump’s attacks on the Federal Reserve",
+    "url": "https://www.ft.com/content/f3df5b5b-6421-43f0-a340-c57210ff329a",
+    "published_time": null
+  },
+  "last_checked": "2026-04-29T08:07:39.244254Z",
   "etag": null,
   "last_modified": null,
-  "error_count": 126,
-  "last_error": "HTTP 403"
+  "error_count": 0,
+  "last_error": null
 }
