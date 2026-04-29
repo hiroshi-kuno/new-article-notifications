@@ -1,9 +1,13 @@
 {
   "source_id": "aendra-rininsland",
-  "last_article": null,
-  "last_checked": "2026-04-29T08:07:39.882290Z",
+  "last_article": {
+    "title": "The English roads at risk of being underwater",
+    "url": "https://www.ft.com/content/1536e0b7-5555-4ee6-85bc-8bdc62617446",
+    "published_time": null
+  },
+  "last_checked": "2026-04-29T10:09:06.136736Z",
   "etag": null,
   "last_modified": null,
-  "error_count": 127,
-  "last_error": "HTTP 403"
+  "error_count": 0,
+  "last_error": null
 }

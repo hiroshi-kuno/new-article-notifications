@@ -1,9 +1,13 @@
 {
   "source_id": "steven-bernard",
-  "last_article": null,
-  "last_checked": "2026-04-29T08:07:39.827898Z",
+  "last_article": {
+    "title": "Greenland ice sheet and Europe’s glaciers shrink further, scientists say",
+    "url": "https://www.ft.com/content/b554bc4f-2944-4c59-a239-9f98082892d1",
+    "published_time": null
+  },
+  "last_checked": "2026-04-29T10:09:03.547554Z",
   "etag": null,
   "last_modified": null,
-  "error_count": 127,
-  "last_error": "HTTP 403"
+  "error_count": 0,
+  "last_error": null
 }

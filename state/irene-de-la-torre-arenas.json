@@ -1,9 +1,13 @@
 {
   "source_id": "irene-de-la-torre-arenas",
-  "last_article": null,
-  "last_checked": "2026-04-29T08:07:39.295851Z",
+  "last_article": {
+    "title": "How Citi’s $52mn hire was forced out of JPMorgan over his behaviour",
+    "url": "https://www.ft.com/content/e45c2c21-babe-4fd9-85f1-2b2b3aa38872",
+    "published_time": null
+  },
+  "last_checked": "2026-04-29T10:08:37.478500Z",
   "etag": null,
   "last_modified": null,
-  "error_count": 127,
-  "last_error": "HTTP 403"
+  "error_count": 0,
+  "last_error": null
 }

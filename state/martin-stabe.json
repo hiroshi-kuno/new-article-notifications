@@ -1,9 +1,13 @@
 {
   "source_id": "martin-stabe",
-  "last_article": null,
-  "last_checked": "2026-04-29T08:07:39.509471Z",
+  "last_article": {
+    "title": "Trump tracker: the latest data on US tariffs, trade and economy",
+    "url": "https://www.ft.com/content/2c473393-35fb-479d-8bba-236a1a98087c",
+    "published_time": null
+  },
+  "last_checked": "2026-04-29T10:08:48.147154Z",
   "etag": null,
   "last_modified": null,
-  "error_count": 127,
-  "last_error": "HTTP 403"
+  "error_count": 0,
+  "last_error": null
 }

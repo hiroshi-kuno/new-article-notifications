@@ -1,9 +1,13 @@
 {
   "source_id": "john-burn-murdoch",
-  "last_article": null,
-  "last_checked": "2026-04-29T08:07:39.401328Z",
+  "last_article": {
+    "title": "What the AI ‘jobpocalypse’ narrative misses",
+    "url": "https://www.ft.com/content/f55c4eba-6e10-4283-8eae-e9f475048b37",
+    "published_time": null
+  },
+  "last_checked": "2026-04-29T10:08:42.805587Z",
   "etag": null,
   "last_modified": null,
-  "error_count": 127,
-  "last_error": "HTTP 403"
+  "error_count": 0,
+  "last_error": null
 }

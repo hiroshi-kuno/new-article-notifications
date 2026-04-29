@@ -1,9 +1,13 @@
 {
   "source_id": "alison-killing",
-  "last_article": null,
-  "last_checked": "2026-04-29T08:07:36.470930Z",
+  "last_article": {
+    "title": "FT Investigations.Iran used Chinese spy satellite to target US bases",
+    "url": "https://www.ft.com/content/1fddd2cd-1294-4e9c-a17d-5ea06b399355",
+    "published_time": null
+  },
+  "last_checked": "2026-04-29T10:08:13.517337Z",
   "etag": null,
   "last_modified": null,
-  "error_count": 127,
-  "last_error": "HTTP 403"
+  "error_count": 0,
+  "last_error": null
 }

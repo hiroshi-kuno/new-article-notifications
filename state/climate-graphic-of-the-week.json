@@ -1,9 +1,13 @@
 {
   "source_id": "climate-graphic-of-the-week",
-  "last_article": null,
-  "last_checked": "2026-04-29T08:07:36.252239Z",
+  "last_article": {
+    "title": "Explainer.How we made it: Sahara dust reaches Europe",
+    "url": "https://www.ft.com/content/0f78551e-e074-4062-bad6-9d673e5ae397",
+    "published_time": null
+  },
+  "last_checked": "2026-04-29T10:08:02.564597Z",
   "etag": null,
   "last_modified": null,
-  "error_count": 603,
-  "last_error": "HTTP 403"
+  "error_count": 0,
+  "last_error": null
 }

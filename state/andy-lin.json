@@ -1,9 +1,13 @@
 {
   "source_id": "andy-lin",
-  "last_article": null,
-  "last_checked": "2026-04-29T08:07:36.528492Z",
+  "last_article": {
+    "title": "How Indian voters stripped Modi of his parliamentary majority — in charts",
+    "url": "https://www.ft.com/content/f03ee739-052e-41b0-9252-e8cc2a42af1c",
+    "published_time": null
+  },
+  "last_checked": "2026-04-29T10:08:16.181297Z",
   "etag": null,
   "last_modified": null,
-  "error_count": 127,
-  "last_error": "HTTP 403"
+  "error_count": 0,
+  "last_error": null
 }

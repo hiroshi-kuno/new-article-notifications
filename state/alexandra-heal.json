@@ -1,9 +1,13 @@
 {
   "source_id": "alexandra-heal",
-  "last_article": null,
-  "last_checked": "2026-04-29T08:07:36.413656Z",
+  "last_article": {
+    "title": "CVC weighs €9bn bid for Italian payments group Nexi",
+    "url": "https://www.ft.com/content/7747e0b3-ae46-4614-a457-47ec79f7081c",
+    "published_time": null
+  },
+  "last_checked": "2026-04-29T10:08:10.472325Z",
   "etag": null,
   "last_modified": null,
-  "error_count": 127,
-  "last_error": "HTTP 403"
+  "error_count": 0,
+  "last_error": null
 }

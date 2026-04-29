@@ -1,9 +1,13 @@
 {
   "source_id": "alan-smith",
-  "last_article": null,
-  "last_checked": "2026-04-29T08:07:36.363277Z",
+  "last_article": {
+    "title": "The company that defied Trump’s tariff war",
+    "url": "https://www.ft.com/content/10c058a9-749b-462a-93e9-11d449c04d1c",
+    "published_time": null
+  },
+  "last_checked": "2026-04-29T10:08:07.816165Z",
   "etag": null,
   "last_modified": null,
-  "error_count": 127,
-  "last_error": "HTTP 403"
+  "error_count": 0,
+  "last_error": null
 }

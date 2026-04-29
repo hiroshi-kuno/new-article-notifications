@@ -1,9 +1,13 @@
 {
   "source_id": "oliver-roeder",
-  "last_article": null,
-  "last_checked": "2026-04-29T08:07:39.610058Z",
+  "last_article": {
+    "title": "Why Donald Trump has an inflation problem",
+    "url": "https://www.ft.com/content/401a7647-5593-4a58-8592-92caf9dbd440",
+    "published_time": null
+  },
+  "last_checked": "2026-04-29T10:08:53.441773Z",
   "etag": null,
   "last_modified": null,
-  "error_count": 127,
-  "last_error": "HTTP 403"
+  "error_count": 0,
+  "last_error": null
 }

@@ -1,9 +1,13 @@
 {
   "source_id": "caroline-nevitt",
-  "last_article": null,
-  "last_checked": "2026-04-29T08:07:36.632800Z",
+  "last_article": {
+    "title": "Explainer.The battle for the world’s most coveted elements",
+    "url": "https://www.ft.com/content/de4de90d-0a15-471c-a55e-103cac6a3b96",
+    "published_time": null
+  },
+  "last_checked": "2026-04-29T10:08:21.335786Z",
   "etag": null,
   "last_modified": null,
-  "error_count": 127,
-  "last_error": "HTTP 403"
+  "error_count": 0,
+  "last_error": null
 }
