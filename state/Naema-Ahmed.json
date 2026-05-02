@@ -5,9 +5,9 @@
     "url": "https://www.washingtonpost.com/climate-environment/interactive/2026/carbon-pollution-diluting-key-nutrients-food/",
     "published_time": "2026-04-30T09:00:00Z"
   },
-  "last_checked": "2026-05-02T10:48:22.087233Z",
+  "last_checked": "2026-05-02T11:45:30.378440Z",
   "etag": null,
   "last_modified": null,
-  "error_count": 0,
-  "last_error": null
+  "error_count": 1,
+  "last_error": "Request timeout after 15s"
 }
