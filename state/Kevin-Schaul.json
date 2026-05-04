@@ -5,9 +5,9 @@
     "url": "https://www.washingtonpost.com/technology/interactive/2026/robot-chores-video-data/",
     "published_time": "2026-04-17T09:00:00Z"
   },
-  "last_checked": "2026-05-04T22:52:22.385992Z",
+  "last_checked": "2026-05-04T23:49:14.651168Z",
   "etag": null,
   "last_modified": null,
-  "error_count": 0,
-  "last_error": null
+  "error_count": 1,
+  "last_error": "Request timeout after 15s"
 }
