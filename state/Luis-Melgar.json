@@ -5,9 +5,9 @@
     "url": "https://www.washingtonpost.com/business/2026/05/04/ice-detention-centers-force/",
     "published_time": "2026-05-04T09:01:56Z"
   },
-  "last_checked": "2026-05-09T05:06:59.729650Z",
+  "last_checked": "2026-05-09T07:12:43.589872Z",
   "etag": null,
   "last_modified": null,
-  "error_count": 0,
-  "last_error": null
+  "error_count": 1,
+  "last_error": "Request timeout after 15s"
 }
