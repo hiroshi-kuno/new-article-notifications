@@ -5,9 +5,9 @@
     "url": "https://www.washingtonpost.com/world/2026/05/05/trump-changing-strategy-iran-war/",
     "published_time": "2026-05-05T10:00:29Z"
   },
-  "last_checked": "2026-05-09T17:46:54.475659Z",
+  "last_checked": "2026-05-09T18:47:55.983811Z",
   "etag": null,
   "last_modified": null,
-  "error_count": 0,
-  "last_error": null
+  "error_count": 1,
+  "last_error": "Request timeout after 15s"
 }
