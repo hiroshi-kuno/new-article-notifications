@@ -5,9 +5,9 @@
     "url": "https://www.washingtonpost.com/technology/interactive/2026/chatbots-hidden-rules-system-prompts/",
     "published_time": "2026-05-11T09:00:00Z"
   },
-  "last_checked": "2026-05-12T01:36:57.747634Z",
+  "last_checked": "2026-05-12T05:34:56.023619Z",
   "etag": null,
   "last_modified": null,
-  "error_count": 0,
-  "last_error": null
+  "error_count": 1,
+  "last_error": "Request timeout after 15s"
 }
