@@ -672,20 +672,22 @@ class FTScraper(GenericHTMLScraper):
         soup = BeautifulSoup(html, 'html.parser')
         from urllib.parse import urljoin
 
-        # Strategy 1: o-teaser__heading (FT's featured article structure)
-        heading_div = soup.find('div', class_='o-teaser__heading')
-        if heading_div:
-            link = heading_div.find('a', href=lambda x: x and '/content/' in str(x))
-            if link:
-                href = link.get('href', '')
-                title = link.get_text(strip=True)
-                if title and len(title) > 5:
-                    url = urljoin('https://www.ft.com', href)
-                    # Look for timestamp in parent teaser
-                    teaser = heading_div.find_parent(class_=lambda x: x and 'o-teaser' in ' '.join(x))
-                    time_elem = teaser.find('time') if teaser else None
-                    pub_time = time_elem.get('datetime') if time_elem else None
-                    return Article(title=title, url=url, published_time=pub_time)
+        # Strategy 1: first o-teaser__heading link (FT's featured article structure).
+        # The href can be /content/{id} (regular article) or https://ig.ft.com/{slug}/
+        # (interactive graphic), so we don't constrain the URL pattern.
+        for heading_div in soup.find_all('div', class_='o-teaser__heading'):
+            link = heading_div.find('a', href=True)
+            if not link:
+                continue
+            href = link.get('href', '')
+            title = link.get_text(strip=True)
+            if not title or len(title) <= 5:
+                continue
+            url = urljoin('https://www.ft.com', href)
+            teaser = heading_div.find_parent(class_=lambda x: x and 'o-teaser' in ' '.join(x))
+            time_elem = teaser.find('time') if teaser else None
+            pub_time = time_elem.get('datetime') if time_elem else None
+            return Article(title=title, url=url, published_time=pub_time)
 
         # Strategy 2: fallback to generic
         return super().parse_top_article(html, base_url)
