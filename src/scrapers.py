@@ -347,21 +347,26 @@ class RSSScraper:
         if not feed.entries:
             return None
 
-        # Get the first (most recent) entry
-        entry = feed.entries[0]
+        # Find the first usable entry, skipping WaPo's /nss/stories/ internal
+        # redirect URLs which appear before each canonical article URL.
+        entry = None
+        title = ''
+        url = ''
+        for candidate in feed.entries:
+            candidate_url = candidate.get('link', '').strip()
+            candidate_title = candidate.get('title', '').strip()
+            if not candidate_url or not candidate_title:
+                continue
+            if candidate_url == 'https://www.washingtonpost.com':
+                continue
+            if '/nss/stories/' in candidate_url:
+                continue
+            entry = candidate
+            title = candidate_title
+            url = candidate_url
+            break
 
-        # Extract title
-        title = entry.get('title', '').strip()
-        if not title:
-            return None
-
-        # Extract URL (try multiple fields)
-        url = entry.get('link', '').strip()
-        if not url:
-            return None
-
-        # Skip if URL is exactly the Washington Post homepage
-        if url == 'https://www.washingtonpost.com':
+        if entry is None:
             return None
 
         # Extract publication time
