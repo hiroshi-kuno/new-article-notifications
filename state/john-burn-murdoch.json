@@ -5,9 +5,9 @@
     "url": "https://www.ft.com/content/f4da6ec3-c56b-4b0b-b8a1-62ca7b0e6bed",
     "published_time": null
   },
-  "last_checked": "2026-05-23T13:03:53.093555Z",
+  "last_checked": "2026-05-23T14:36:31.292299Z",
   "etag": null,
   "last_modified": null,
-  "error_count": 0,
-  "last_error": null
+  "error_count": 1,
+  "last_error": "Request timeout after 15s"
 }
