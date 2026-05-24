@@ -5,9 +5,9 @@
     "url": "https://www.anychart.com/blog/2026/05/22/data-maps/",
     "published_time": null
   },
-  "last_checked": "2026-05-24T22:55:21.580630Z",
+  "last_checked": "2026-05-24T23:57:50.492400Z",
   "etag": null,
   "last_modified": null,
-  "error_count": 0,
-  "last_error": null
+  "error_count": 1,
+  "last_error": "HTTP 521"
 }
