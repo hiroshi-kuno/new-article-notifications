@@ -5,9 +5,9 @@
     "url": "https://www.washingtonpost.com/2026/01/31/trump-wants-to-build-a-250-foot-tall-arch-dwarfing-the-lincoln-memorial/",
     "published_time": "2026-01-31T19:59:47Z"
   },
-  "last_checked": "2026-05-26T16:45:05.771829Z",
+  "last_checked": "2026-05-26T19:23:04.508549Z",
   "etag": null,
   "last_modified": null,
-  "error_count": 0,
-  "last_error": null
+  "error_count": 1,
+  "last_error": "Request timeout after 15s"
 }
