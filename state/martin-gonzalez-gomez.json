@@ -5,9 +5,9 @@
     "url": "https://www.nytimes.com/interactive/2026/05/08/polls/colorado-us-house-5-polls-2026.html",
     "published_time": null
   },
-  "last_checked": "2026-05-27T14:16:15.112941Z",
+  "last_checked": "2026-05-27T17:48:34.885313Z",
   "etag": null,
   "last_modified": "Wed, 27 May 2026 14:16:12 GMT",
-  "error_count": 0,
-  "last_error": null
+  "error_count": 1,
+  "last_error": "HTTP 500"
 }
