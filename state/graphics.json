@@ -5,9 +5,9 @@
     "url": "https://www.reuters.com/science/bachelors-rare-earths-china-there-are-schools-that-2026-06-01/",
     "published_time": null
   },
-  "last_checked": "2026-06-03T00:33:34.764951Z",
+  "last_checked": "2026-06-03T06:04:35.595798Z",
   "etag": "W/\"6e79d-w2/gWto5j9yQeenK5n5K1BYuMl4\"",
   "last_modified": "Wed, 03 Jun 2026 00:33:32 GMT",
-  "error_count": 0,
-  "last_error": null
+  "error_count": 1,
+  "last_error": "HTTP 403"
 }
