@@ -5,9 +5,9 @@
     "url": "https://www.reuters.com/business/media-telecom/paramounts-takeover-warner-bros-ushers-new-era-hollywoods-eat-or-be-eaten-2026-06-03/",
     "published_time": null
   },
-  "last_checked": "2026-06-07T20:17:02.311137Z",
+  "last_checked": "2026-06-07T22:07:56.935679Z",
   "etag": "W/\"7059d-7iWDBLVCOdXDubO7WkfIJBikZiI\"",
   "last_modified": "Sun, 07 Jun 2026 20:16:22 GMT",
-  "error_count": 0,
-  "last_error": null
+  "error_count": 1,
+  "last_error": "HTTP 403"
 }
