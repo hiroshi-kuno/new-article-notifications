@@ -57,7 +57,8 @@ def test_nyt_webhook_notification():
     success = notifier.send(
         source_id="nyt-test",
         article=new_article,
-        previous_article=previous_article
+        previous_article=previous_article,
+        webhook_key="WEBHOOK_URL_NYT",
     )
 
     print()

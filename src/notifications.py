@@ -99,15 +99,15 @@ class DiscordNotifier:
             embed_color = 0x14171A
 
         fields = [
-            {"name": "Title", "value": article.title, "inline": False},
-            {"name": "URL", "value": f"[View Article]({article.url})", "inline": False},
+            {"name": "見出し", "value": article.title, "inline": False},
+            {"name": "URL", "value": f"[コンテンツをみる]({article.url})", "inline": False},
         ]
 
         if article.published_time:
             fields.append({"name": "Published", "value": article.published_time, "inline": False})
 
         embed = {
-            "title": f"{site_emoji} New Article: {source_id}",
+            "title": f"{site_emoji} By {source_id}",
             "color": embed_color,
             "fields": fields,
         }
@@ -116,7 +116,7 @@ class DiscordNotifier:
             embed["footer"] = {"text": f"Previous: {previous_article.title}"}
 
         return {
-            "content": f"{site_emoji} New article from {source_id}",
+            "content": f"{site_emoji} 新着のビジュアル（多分）をキャッチしました！",
             "embeds": [embed],
         }
 
