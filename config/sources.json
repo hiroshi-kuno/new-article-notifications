@@ -524,6 +524,10 @@
     {
       "url": "https://www.asahi.com/special/",
       "enabled": true
+    },
+    {
+      "url": "https://www.nbcnews.com/datagraphics",
+      "enabled": true
     }
   ]
 }
