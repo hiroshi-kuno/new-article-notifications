@@ -527,7 +527,8 @@
     },
     {
       "url": "https://www.nbcnews.com/datagraphics",
-      "enabled": true
+      "enabled": true,
+      "webhook": "WEBHOOK_URL_NBC"
     }
   ]
 }

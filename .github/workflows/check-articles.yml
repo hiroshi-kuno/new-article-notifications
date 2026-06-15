@@ -46,6 +46,7 @@ jobs:
           WEBHOOK_URL_WAPO: ${{ secrets.WEBHOOK_URL_WAPO }}
           WEBHOOK_URL_BLOG: ${{ secrets.WEBHOOK_URL_BLOG }}
           WEBHOOK_URL_FT: ${{ secrets.WEBHOOK_URL_FT }}
+          WEBHOOK_URL_NBC: ${{ secrets.WEBHOOK_URL_NBC }}
         run: |
           python check_articles.py
 
