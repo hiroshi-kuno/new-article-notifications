@@ -356,7 +356,7 @@
       "webhook": "WEBHOOK_URL_WAPO"
     },
     {
-      "url": "https://gijn.org/topic/data-journalism-top-10/",
+      "url": "https://gijn.org/topic/data-journalism-top-10/rss/",
       "enabled": true,
       "webhook": "WEBHOOK_URL_BLOG"
     },

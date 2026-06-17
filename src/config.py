@@ -35,6 +35,9 @@ class Config:
         """
         return [s for s in self.sources if s.get('enabled', True)]
 
+    # Trailing path segments that don't identify the source itself
+    _SOURCE_ID_SKIP = ('rss', 'feed', 'rss.xml', 'feed.xml', 'atom.xml', 'index.xml')
+
     @staticmethod
     def extract_source_id(url: str) -> str:
         """Extract source ID from URL.
@@ -43,8 +46,13 @@ class Config:
             url: Source URL
 
         Returns:
-            Source ID (last path component)
+            Source ID (last meaningful path component)
         """
         parsed = urlparse(url)
         path = parsed.path.rstrip('/')
-        return path.split('/')[-1] if path else 'unknown'
+        if not path:
+            return 'unknown'
+        segments = path.split('/')
+        while segments and segments[-1].lower() in Config._SOURCE_ID_SKIP:
+            segments.pop()
+        return segments[-1] if segments and segments[-1] else 'unknown'
