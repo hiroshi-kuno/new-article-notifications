@@ -529,6 +529,10 @@
       "url": "https://www.nbcnews.com/datagraphics",
       "enabled": true,
       "webhook": "WEBHOOK_URL_NBC"
+    },
+    {
+      "url": "https://www.cw.com.tw/graphics/",
+      "enabled": true
     }
   ]
 }

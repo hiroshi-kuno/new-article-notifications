@@ -706,7 +706,7 @@ class LATimesPeopleScraper(RSSScraper):
 
 
 # Domains handled by the generic HTML scraper
-_GENERIC_HTML_DOMAINS = ('gijn.org', 'datawrapper.de', 'anychart.com', 'aljazeera.com', 'pudding.cool', 'straitstimes.com', 'asahi.com', 'nbcnews.com')
+_GENERIC_HTML_DOMAINS = ('gijn.org', 'datawrapper.de', 'anychart.com', 'aljazeera.com', 'pudding.cool', 'straitstimes.com', 'asahi.com', 'nbcnews.com', 'cw.com.tw')
 
 
 def get_scraper(url: str):
