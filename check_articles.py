@@ -21,7 +21,7 @@ def check_source(source: dict, state_manager: StateManager, notifier) -> bool:
         True if check was successful, False otherwise
     """
     source_url = source['url']
-    source_id = Config.extract_source_id(source_url)
+    source_id = Config.extract_source_id(source)
     webhook_key = source.get('webhook')
 
     print(f"\n{'='*60}")
@@ -142,7 +142,7 @@ def main():
 
         results = []
         for source in sources:
-            source_id = Config.extract_source_id(source['url'])
+            source_id = Config.extract_source_id(source)
             success = check_source(source, state_manager, notifier)
             results.append((source_id, success))
 

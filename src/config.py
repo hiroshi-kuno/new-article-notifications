@@ -39,15 +39,27 @@ class Config:
     _SOURCE_ID_SKIP = ('rss', 'feed', 'rss.xml', 'feed.xml', 'atom.xml', 'index.xml')
 
     @staticmethod
-    def extract_source_id(url: str) -> str:
-        """Extract source ID from URL.
+    def extract_source_id(url_or_source) -> str:
+        """Extract source ID from a URL string or source config dict.
+
+        Accepts either a URL string (legacy) or a source dict from sources.json.
+        When given a dict, an explicit "source_id" field takes precedence over
+        the URL-derived ID — use this to disambiguate sources whose URLs would
+        produce the same trailing path segment.
 
         Args:
-            url: Source URL
+            url_or_source: URL string or source config dict.
 
         Returns:
-            Source ID (last meaningful path component)
+            Source ID (explicit override, or last meaningful path component).
         """
+        if isinstance(url_or_source, dict):
+            if explicit := url_or_source.get('source_id'):
+                return explicit
+            url = url_or_source.get('url', '')
+        else:
+            url = url_or_source
+
         parsed = urlparse(url)
         path = parsed.path.rstrip('/')
         if not path:
