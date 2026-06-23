@@ -5,9 +5,9 @@
     "url": "https://www.nytimes.com/interactive/2026/us/tsa-wait-times-us-airports.html",
     "published_time": null
   },
-  "last_checked": "2026-06-23T05:56:07.192180Z",
+  "last_checked": "2026-06-23T08:51:32.505536Z",
   "etag": null,
-  "last_modified": "Tue, 23 Jun 2026 01:52:00 GMT",
-  "error_count": 1,
-  "last_error": "HTTP 500"
+  "last_modified": "Tue, 23 Jun 2026 08:51:30 GMT",
+  "error_count": 0,
+  "last_error": null
 }
