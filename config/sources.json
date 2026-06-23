@@ -532,7 +532,8 @@
     },
     {
       "url": "https://www.cw.com.tw/graphics/",
-      "enabled": true
+      "enabled": true,
+      "source_id": "cw-graphics"
     }
   ]
 }
