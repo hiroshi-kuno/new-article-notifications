@@ -5,9 +5,9 @@
     "url": "https://www.nytimes.com/interactive/2026/06/03/us/house-iran-war-powers.html",
     "published_time": null
   },
-  "last_checked": "2026-06-23T21:21:32.651940Z",
+  "last_checked": "2026-06-23T22:56:52.283064Z",
   "etag": null,
   "last_modified": "Tue, 23 Jun 2026 21:21:30 GMT",
-  "error_count": 0,
-  "last_error": null
+  "error_count": 1,
+  "last_error": "HTTP 500"
 }
