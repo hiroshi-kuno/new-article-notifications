@@ -5,9 +5,9 @@
     "url": "https://www.nytimes.com/live/2025/climate/antarctica-thwaites-glacier/the-decline-of-the-thwaites-glacier-could-affect-tens-of-millions-worldwide",
     "published_time": null
   },
-  "last_checked": "2026-06-22T23:09:30.896221Z",
+  "last_checked": "2026-06-23T01:52:39.979125Z",
   "etag": null,
   "last_modified": "Mon, 22 Jun 2026 23:09:28 GMT",
-  "error_count": 0,
-  "last_error": null
+  "error_count": 1,
+  "last_error": "HTTP 500"
 }
