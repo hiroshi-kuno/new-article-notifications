@@ -5,9 +5,9 @@
     "url": "https://www.nytimes.com/interactive/2026/06/21/us/trucks-suv-pedestrian-crashes.html",
     "published_time": null
   },
-  "last_checked": "2026-06-30T08:59:43.278016Z",
+  "last_checked": "2026-06-30T11:44:15.115568Z",
   "etag": null,
   "last_modified": "Tue, 30 Jun 2026 08:59:40 GMT",
-  "error_count": 0,
-  "last_error": null
+  "error_count": 1,
+  "last_error": "HTTP 503"
 }
