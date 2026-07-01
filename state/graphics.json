@@ -5,9 +5,9 @@
     "url": "https://www.reuters.com/sports/why-lightning-can-stop-world-cup-match-2026-06-30/",
     "published_time": null
   },
-  "last_checked": "2026-07-01T20:43:00.799633Z",
+  "last_checked": "2026-07-01T22:21:55.705008Z",
   "etag": "W/\"6e346-ELZtLiZqSkC7ZBmIMxF4g5BPzuE\"",
   "last_modified": "Wed, 01 Jul 2026 20:41:44 GMT",
-  "error_count": 0,
-  "last_error": null
+  "error_count": 1,
+  "last_error": "HTTP 403"
 }
