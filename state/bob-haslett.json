@@ -5,9 +5,9 @@
     "url": "https://www.ft.com/content/2fdc8f82-d8d4-465f-870f-3dafa4823fdf",
     "published_time": null
   },
-  "last_checked": "2026-07-02T14:03:31.465445Z",
+  "last_checked": "2026-07-02T16:09:55.837103Z",
   "etag": null,
   "last_modified": null,
-  "error_count": 1,
-  "last_error": "Request failed: HTTPSConnectionPool(host='www.ft.com', port=443): Read timed out."
+  "error_count": 0,
+  "last_error": null
 }
