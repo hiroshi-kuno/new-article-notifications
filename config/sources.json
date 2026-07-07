@@ -534,6 +534,10 @@
       "url": "https://www.cw.com.tw/graphics/",
       "enabled": true,
       "source_id": "cw-graphics"
+    },
+    {
+      "url": "https://kontinentalist.com/stories",
+      "enabled": true
     }
   ]
 }

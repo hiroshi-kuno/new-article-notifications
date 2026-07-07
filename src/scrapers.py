@@ -693,6 +693,30 @@ class FTScraper(GenericHTMLScraper):
         return super().parse_top_article(html, base_url)
 
 
+class KontinentalistScraper(GenericHTMLScraper):
+    """Scraper for Kontinentalist story listing pages."""
+
+    def parse_top_article(self, html: str, base_url: str) -> Optional[Article]:
+        """Parse the top story from Kontinentalist.
+
+        Kontinentalist uses <a class="CheloneStoryCard"> cards. The card's
+        header contains the title and a subtitle in separate spans.
+        """
+        from urllib.parse import urljoin
+
+        soup = BeautifulSoup(html, 'html.parser')
+
+        card = soup.find('a', class_='CheloneStoryCard')
+        if card and card.get('href'):
+            header = card.find(class_='CheloneStoryCard__header')
+            title = header.get_text(separator=' — ', strip=True) if header else card.get_text(strip=True)
+            if title and len(title) > 3:
+                url = urljoin('https://kontinentalist.com', card['href'])
+                return Article(title=title, url=url, published_time=None)
+
+        return super().parse_top_article(html, base_url)
+
+
 class LATimesPeopleScraper(RSSScraper):
     """Scraper for LA Times author pages using their RSS feed."""
 
@@ -729,6 +753,8 @@ def get_scraper(url: str):
         return FTScraper()
     if 'latimes.com/people/' in url:
         return LATimesPeopleScraper()
+    if 'kontinentalist.com/' in url:
+        return KontinentalistScraper()
     if 'reuters.com/' in url:
         return ReutersScraper()
     if any(domain in url for domain in _GENERIC_HTML_DOMAINS):
