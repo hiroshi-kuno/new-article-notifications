@@ -5,9 +5,9 @@
     "url": "https://www.washingtonpost.com/world/interactive/2026/06/20/one-strike-helps-map-human-toll-across-iran/",
     "published_time": "2026-06-21T10:00:00Z"
   },
-  "last_checked": "2026-07-16T17:01:16.414585Z",
+  "last_checked": "2026-07-16T18:03:08.635886Z",
   "etag": null,
   "last_modified": null,
-  "error_count": 0,
-  "last_error": null
+  "error_count": 1,
+  "last_error": "Request timeout after 15s"
 }
