@@ -5,9 +5,9 @@
     "url": "https://www.nytimes.com/interactive/2023/10/30/world/middleeast/israel-invasion-gaza-satellite-image-map.html",
     "published_time": null
   },
-  "last_checked": "2026-07-18T12:40:41.989494Z",
+  "last_checked": "2026-07-18T14:11:56.202197Z",
   "etag": null,
   "last_modified": "Sat, 18 Jul 2026 12:40:39 GMT",
-  "error_count": 0,
-  "last_error": null
+  "error_count": 1,
+  "last_error": "HTTP 500"
 }
