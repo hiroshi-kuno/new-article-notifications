@@ -5,9 +5,9 @@
     "url": "https://www.washingtonpost.com/politics/interactive/2025/supreme-court-cases-2025-26-term/",
     "published_time": "2026-06-18T18:28:49Z"
   },
-  "last_checked": "2026-07-19T18:52:14.277664Z",
+  "last_checked": "2026-07-19T20:10:25.017916Z",
   "etag": null,
   "last_modified": null,
-  "error_count": 0,
-  "last_error": null
+  "error_count": 1,
+  "last_error": "Request timeout after 15s"
 }

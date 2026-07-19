@@ -5,9 +5,9 @@
     "url": "https://www.washingtonpost.com/investigations/2026/07/11/videos-show-ice-agents-pursuing-van-unmarked-vehicles-before-fatal-shooting/",
     "published_time": "2026-07-11T22:16:03Z"
   },
-  "last_checked": "2026-07-19T18:48:09.598262Z",
+  "last_checked": "2026-07-19T20:05:30.540811Z",
   "etag": null,
   "last_modified": null,
-  "error_count": 0,
-  "last_error": null
+  "error_count": 1,
+  "last_error": "Request timeout after 15s"
 }

@@ -5,9 +5,9 @@
     "url": "https://www.washingtonpost.com/elections/interactive/2026/06/25/these-are-biggest-individual-donors-2026-election-cycle/",
     "published_time": "2026-06-25T10:00:01Z"
   },
-  "last_checked": "2026-07-19T18:50:54.904828Z",
+  "last_checked": "2026-07-19T20:08:45.249953Z",
   "etag": null,
   "last_modified": null,
-  "error_count": 0,
-  "last_error": null
+  "error_count": 1,
+  "last_error": "Request timeout after 15s"
 }
