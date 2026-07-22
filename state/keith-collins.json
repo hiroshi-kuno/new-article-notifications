@@ -5,9 +5,9 @@
     "url": "https://www.nytimes.com/2026/06/17/business/media/obsession-backrooms-summer-box-office-charts.html",
     "published_time": null
   },
-  "last_checked": "2026-07-22T12:18:38.742549Z",
+  "last_checked": "2026-07-22T14:50:48.458968Z",
   "etag": null,
   "last_modified": "Wed, 22 Jul 2026 12:16:01 GMT",
-  "error_count": 0,
-  "last_error": null
+  "error_count": 1,
+  "last_error": "HTTP 503"
 }
