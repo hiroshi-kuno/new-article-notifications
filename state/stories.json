@@ -5,9 +5,9 @@
     "url": "https://kontinentalist.com/stories/data-centres-in-johor-singapore-batam",
     "published_time": null
   },
-  "last_checked": "2026-08-02T01:31:53.219085Z",
+  "last_checked": "2026-08-02T05:17:32.598521Z",
   "etag": "\"f62e4-G1a2gkfSX5Q4sfEXxqQ3/XnrJiI\"",
   "last_modified": null,
-  "error_count": 0,
-  "last_error": null
+  "error_count": 1,
+  "last_error": "Request timeout after 15s"
 }
