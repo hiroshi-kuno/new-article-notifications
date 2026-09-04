@@ -5,9 +5,9 @@
     "url": "https://www.washingtonpost.com/weather/2026/09/02/deep-grand-canyon-rain-left-them-nowhere-go/",
     "published_time": "2026-09-02T09:00:00Z"
   },
-  "last_checked": "2026-09-03T23:39:15.967962Z",
+  "last_checked": "2026-09-04T01:30:19.940438Z",
   "etag": null,
   "last_modified": null,
-  "error_count": 0,
-  "last_error": null
+  "error_count": 1,
+  "last_error": "Request timeout after 15s"
 }
