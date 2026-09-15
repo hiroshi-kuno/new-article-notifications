@@ -5,9 +5,9 @@
     "url": "https://www.nytimes.com/interactive/2026/04/08/health/illegal-labs-potent-drugs.html",
     "published_time": null
   },
-  "last_checked": "2026-09-15T19:17:45.003250Z",
+  "last_checked": "2026-09-15T22:28:03.996597Z",
   "etag": null,
   "last_modified": "Tue, 15 Sep 2026 19:15:06 GMT",
-  "error_count": 0,
-  "last_error": null
+  "error_count": 1,
+  "last_error": "HTTP 403"
 }
