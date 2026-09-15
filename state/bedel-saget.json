@@ -5,9 +5,9 @@
     "url": "https://www.nytimes.com/interactive/2026/07/07/sports/soccer/usa-belgium-world-cup-goal.html",
     "published_time": null
   },
-  "last_checked": "2026-09-15T15:17:33.446713Z",
+  "last_checked": "2026-09-15T19:17:31.802374Z",
   "etag": null,
   "last_modified": "Tue, 15 Sep 2026 15:17:31 GMT",
-  "error_count": 0,
-  "last_error": null
+  "error_count": 1,
+  "last_error": "HTTP 403"
 }

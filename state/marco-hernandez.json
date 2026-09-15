@@ -5,9 +5,9 @@
     "url": "https://www.nytimes.com/interactive/2026/07/16/us/politics/white-house-helipad-trump.html",
     "published_time": null
   },
-  "last_checked": "2026-09-15T15:18:23.270244Z",
+  "last_checked": "2026-09-15T19:18:08.525015Z",
   "etag": null,
   "last_modified": "Tue, 15 Sep 2026 15:12:52 GMT",
-  "error_count": 0,
-  "last_error": null
+  "error_count": 1,
+  "last_error": "HTTP 403"
 }
