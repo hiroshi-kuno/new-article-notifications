@@ -5,9 +5,9 @@
     "url": "https://gijn.org/stories/ddj-irans-internet-blackouts-tiktok-health-misinformation/",
     "published_time": null
   },
-  "last_checked": "2026-09-17T01:06:46.103755Z",
+  "last_checked": "2026-09-17T05:43:26.755713Z",
   "etag": null,
   "last_modified": null,
-  "error_count": 3442,
-  "last_error": "HTTP 403"
+  "error_count": 3443,
+  "last_error": "Request failed: ('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))"
 }
