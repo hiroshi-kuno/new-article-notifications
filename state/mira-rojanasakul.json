@@ -5,9 +5,9 @@
     "url": "https://www.nytimes.com/2026/08/25/climate/el-nino-temperature-charts.html",
     "published_time": null
   },
-  "last_checked": "2026-09-16T22:25:13.882416Z",
+  "last_checked": "2026-09-17T00:55:52.047130Z",
   "etag": null,
   "last_modified": "Wed, 16 Sep 2026 22:25:11 GMT",
-  "error_count": 0,
-  "last_error": null
+  "error_count": 1,
+  "last_error": "HTTP 403"
 }

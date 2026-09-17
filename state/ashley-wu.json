@@ -5,9 +5,9 @@
     "url": "https://www.nytimes.com/interactive/2026/08/26/us/politics/trump-primary-midterms-endorsements.html",
     "published_time": null
   },
-  "last_checked": "2026-09-16T22:24:48.494771Z",
+  "last_checked": "2026-09-17T00:55:23.368291Z",
   "etag": null,
   "last_modified": "Wed, 16 Sep 2026 22:24:46 GMT",
-  "error_count": 0,
-  "last_error": null
+  "error_count": 1,
+  "last_error": "HTTP 403"
 }
