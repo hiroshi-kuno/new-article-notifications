@@ -5,9 +5,9 @@
     "url": "https://www.ft.com/content/b3b198c3-f991-4428-b33f-88e3b84bf479?syn-25a6b1a6=1",
     "published_time": null
   },
-  "last_checked": "2026-10-02T16:10:39.171781Z",
+  "last_checked": "2026-10-02T20:29:30.246429Z",
   "etag": null,
   "last_modified": null,
-  "error_count": 0,
-  "last_error": null
+  "error_count": 1,
+  "last_error": "HTTP 429"
 }
