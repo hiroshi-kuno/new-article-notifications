@@ -5,9 +5,9 @@
     "url": "https://ig.ft.com/transformers/?syn-25a6b1a6=1",
     "published_time": null
   },
-  "last_checked": "2026-10-07T02:57:28.164869Z",
+  "last_checked": "2026-10-07T09:34:11.520931Z",
   "etag": null,
   "last_modified": null,
-  "error_count": 0,
-  "last_error": null
+  "error_count": 1,
+  "last_error": "HTTP 403"
 }
