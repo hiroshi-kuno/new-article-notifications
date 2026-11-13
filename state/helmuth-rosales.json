@@ -5,9 +5,9 @@
     "url": "https://www.nytimes.com/2026/10/21/world/americas/venezuela-earthquakes-deaths.html",
     "published_time": null
   },
-  "last_checked": "2026-11-13T10:07:29.344256Z",
+  "last_checked": "2026-11-13T18:09:09.600075Z",
   "etag": null,
   "last_modified": "Fri, 13 Nov 2026 10:07:27 GMT",
-  "error_count": 0,
-  "last_error": null
+  "error_count": 1,
+  "last_error": "HTTP 403"
 }

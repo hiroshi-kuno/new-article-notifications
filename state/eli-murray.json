@@ -5,9 +5,9 @@
     "url": "https://www.nytimes.com/interactive/2026/11/10/us/supreme-court-guns-misquote.html",
     "published_time": null
   },
-  "last_checked": "2026-11-13T10:07:23.843898Z",
+  "last_checked": "2026-11-13T18:09:09.381183Z",
   "etag": null,
   "last_modified": "Fri, 13 Nov 2026 10:07:21 GMT",
-  "error_count": 0,
-  "last_error": null
+  "error_count": 1,
+  "last_error": "HTTP 403"
 }
