@@ -5,9 +5,9 @@
     "url": "https://www.nytimes.com/interactive/2026/11/02/us/elections/polls-closing-time-midterm-elections.html",
     "published_time": null
   },
-  "last_checked": "2026-11-15T15:55:21.843298Z",
+  "last_checked": "2026-11-15T20:37:33.328934Z",
   "etag": null,
   "last_modified": "Sun, 15 Nov 2026 15:55:19 GMT",
-  "error_count": 0,
-  "last_error": null
+  "error_count": 1,
+  "last_error": "HTTP 403"
 }
