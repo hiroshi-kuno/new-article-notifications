@@ -5,9 +5,9 @@
     "url": "https://www.nytimes.com/interactive/2026/09/11/world/middleeast/houthis-yemen-red-sea-shipping-maps.html",
     "published_time": null
   },
-  "last_checked": "2026-11-14T21:42:41.318755Z",
+  "last_checked": "2026-11-15T01:21:57.807438Z",
   "etag": null,
   "last_modified": "Sat, 14 Nov 2026 21:37:41 GMT",
-  "error_count": 0,
-  "last_error": null
+  "error_count": 1,
+  "last_error": "HTTP 403"
 }
