@@ -5,9 +5,9 @@
     "url": "https://www.nytimes.com/2026/11/07/upshot/senators-midterm-elections-age.html",
     "published_time": null
   },
-  "last_checked": "2026-11-15T01:21:09.447339Z",
+  "last_checked": "2026-11-15T08:28:36.025183Z",
   "etag": null,
   "last_modified": "Sun, 15 Nov 2026 01:21:07 GMT",
-  "error_count": 0,
-  "last_error": null
+  "error_count": 1,
+  "last_error": "HTTP 403"
 }
