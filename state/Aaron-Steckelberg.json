@@ -5,9 +5,9 @@
     "url": "https://www.washingtonpost.com/climate-environment/2026/11/11/see-where-ss-united-states-will-sink-wednesday-becoming-titanic-sized-reef/",
     "published_time": "2026-11-11T16:30:00Z"
   },
-  "last_checked": "2026-11-16T07:23:49.851310Z",
+  "last_checked": "2026-11-16T17:32:18.609240Z",
   "etag": null,
   "last_modified": null,
-  "error_count": 0,
-  "last_error": null
+  "error_count": 1,
+  "last_error": "Request timeout after 15s"
 }
