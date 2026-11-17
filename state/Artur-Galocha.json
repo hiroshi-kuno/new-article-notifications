@@ -5,9 +5,9 @@
     "url": "https://www.washingtonpost.com/technology/interactive/2026/ice-surveillance-immigrants-protesters/",
     "published_time": "2026-01-29T10:00:31Z"
   },
-  "last_checked": "2026-11-17T01:09:30.148982Z",
+  "last_checked": "2026-11-17T09:47:48.532097Z",
   "etag": null,
   "last_modified": null,
-  "error_count": 0,
-  "last_error": null
+  "error_count": 1,
+  "last_error": "Request timeout after 15s"
 }
