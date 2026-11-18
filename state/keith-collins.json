@@ -5,9 +5,9 @@
     "url": "https://www.nytimes.com/2026/10/30/business/energy-environment/exxon-chevron-oil-profits-iran-war.html",
     "published_time": null
   },
-  "last_checked": "2026-11-17T18:48:07.914599Z",
+  "last_checked": "2026-11-18T01:21:36.065912Z",
   "etag": null,
   "last_modified": "Tue, 17 Nov 2026 18:48:05 GMT",
-  "error_count": 0,
-  "last_error": null
+  "error_count": 1,
+  "last_error": "HTTP 403"
 }
