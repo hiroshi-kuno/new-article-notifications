@@ -5,9 +5,9 @@
     "url": "https://www.washingtonpost.com/elections/2022/11/07/poll-close-times/",
     "published_time": "2022-11-08T14:00:30Z"
   },
-  "last_checked": "2026-11-20T04:28:24.587539Z",
+  "last_checked": "2026-11-20T13:40:26.690279Z",
   "etag": null,
   "last_modified": null,
-  "error_count": 0,
-  "last_error": null
+  "error_count": 1,
+  "last_error": "Request timeout after 15s"
 }
