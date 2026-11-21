@@ -5,9 +5,9 @@
     "url": "https://www.washingtonpost.com/health/interactive/2026/10/29/aca-premiums-are-going-up-again-see-what-it-means-you/",
     "published_time": "2026-10-29T09:00:00Z"
   },
-  "last_checked": "2026-11-20T21:43:11.803612Z",
+  "last_checked": "2026-11-21T03:01:38.963570Z",
   "etag": null,
   "last_modified": null,
-  "error_count": 0,
-  "last_error": null
+  "error_count": 1,
+  "last_error": "Request timeout after 15s"
 }
