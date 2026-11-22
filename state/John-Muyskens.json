@@ -5,9 +5,9 @@
     "url": "https://www.washingtonpost.com/politics/2026/11/04/what-norc-voter-poll-shows-about-who-voted-whom-midterms/",
     "published_time": "2026-11-20T20:28:06Z"
   },
-  "last_checked": "2026-11-21T22:34:00.218367Z",
+  "last_checked": "2026-11-22T02:47:41.726383Z",
   "etag": null,
   "last_modified": null,
-  "error_count": 0,
-  "last_error": null
+  "error_count": 1,
+  "last_error": "Request timeout after 15s"
 }
