@@ -5,9 +5,9 @@
     "url": "https://www.washingtonpost.com/world/2026/11/18/trump-is-trying-put-iran-war-behind-him-its-not-over/",
     "published_time": "2026-11-18T11:23:31Z"
   },
-  "last_checked": "2026-11-22T02:41:37.458198Z",
+  "last_checked": "2026-11-22T10:23:15.209463Z",
   "etag": null,
   "last_modified": null,
-  "error_count": 0,
-  "last_error": null
+  "error_count": 1,
+  "last_error": "Request timeout after 15s"
 }
