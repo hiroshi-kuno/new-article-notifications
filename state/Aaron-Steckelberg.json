@@ -5,9 +5,9 @@
     "url": "https://www.washingtonpost.com/nation/2026/11/25/how-army-detonated-explosives-iowa-potential-plume/",
     "published_time": "2026-11-26T02:52:52Z"
   },
-  "last_checked": "2026-11-26T18:43:16.506602Z",
+  "last_checked": "2026-11-27T01:58:06.399777Z",
   "etag": null,
   "last_modified": null,
-  "error_count": 0,
-  "last_error": null
+  "error_count": 1,
+  "last_error": "Request timeout after 15s"
 }
